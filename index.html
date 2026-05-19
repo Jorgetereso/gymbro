@@ -658,7 +658,7 @@
     </div>
 
     <div class="alert info" style="margin-bottom:14px">
-      Each cell shows day-of-program + workout type. <span class="accent">Tue=Legs</span>, <span style="color:#7dd3fc">Wed=Push</span>, <span style="color:#86efac">Thu=Pull</span>, Fri/Sat=Golf, Sun=Rest, <span style="color:#fdba74">Mon=Accessory</span>. Click a day to jump there.
+      Each cell shows day-of-program + workout type. <span style="color:#7dd3fc">Tue=Push</span>, <span style="color:#86efac">Wed=Pull</span>, <span style="color:#fdba74">Thu=Accessory</span>, Fri/Sat=Golf, Sun=Rest, <span class="accent">Mon=Legs</span>. Click a day to jump there.
     </div>
 
     <div class="card">
@@ -700,13 +700,13 @@
       <div class="card">
         <h3>Training Split</h3>
         <div class="kv" style="margin-top:6px">
-          <div class="k"><span class="tag legs">Tue</span> Legs (Home)</div><div class="v">Tempo + single-leg</div>
-          <div class="k"><span class="tag push">Wed</span> Push (Home)</div><div class="v">Chest/Shldr/Tri</div>
-          <div class="k"><span class="tag pull">Thu</span> Pull (Home)</div><div class="v">Back/Bi/Rear delt</div>
+          <div class="k"><span class="tag push">Tue</span> Push (Home)</div><div class="v">Chest/Shldr/Tri</div>
+          <div class="k"><span class="tag pull">Wed</span> Pull (Home)</div><div class="v">Back/Bi/Rear delt</div>
+          <div class="k"><span class="tag home">Thu</span> Accessory + Core</div><div class="v">TRX/DB/Pull-up bar</div>
           <div class="k"><span class="tag golf">Fri</span> Golf</div><div class="v">Rest</div>
           <div class="k"><span class="tag golf">Sat</span> Golf</div><div class="v">Rest</div>
           <div class="k"><span class="tag rest">Sun</span> Full Rest</div><div class="v">Walk 30 min</div>
-          <div class="k"><span class="tag home">Mon</span> Accessory + Core</div><div class="v">TRX/DB/Pull-up bar</div>
+          <div class="k"><span class="tag legs">Mon</span> Legs (Home)</div><div class="v">Tempo + single-leg</div>
         </div>
       </div>
 
@@ -732,19 +732,19 @@
       <h3>Workouts In Detail</h3>
       <div class="meta">Click each day for exercises, sets/reps, and form cues. Weekly modifier shown on the TODAY tab.</div>
       <details open>
-        <summary><span class="tag legs">TUE</span> Legs (Home)</summary>
+        <summary><span class="tag push">TUE</span> Push (Home)</summary>
         <div id="detailMon"></div>
       </details>
       <details>
-        <summary><span class="tag push">WED</span> Push (Home)</summary>
+        <summary><span class="tag pull">WED</span> Pull (Home)</summary>
         <div id="detailTue"></div>
       </details>
       <details>
-        <summary><span class="tag pull">THU</span> Pull (Home)</summary>
+        <summary><span class="tag home">THU</span> Accessory + Core</summary>
         <div id="detailWed"></div>
       </details>
       <details>
-        <summary><span class="tag home">MON</span> Accessory + Core</summary>
+        <summary><span class="tag legs">MON</span> Legs (Home)</summary>
         <div id="detailThu"></div>
       </details>
     </div>
@@ -958,7 +958,7 @@ const PHASES = {
 };
 
 /* WORKOUT TEMPLATES (slot = days from startDate; 1=startDay..7=startDay+6)
-   With startDate = Tue: 1=Tue(Legs) 2=Wed(Push) 3=Thu(Pull) 4=Fri(Golf) 5=Sat(Golf) 6=Sun(Rest) 7=Mon(Accessory).
+   With startDate = Tue: 1=Tue(Push) 2=Wed(Pull) 3=Thu(Accessory) 4=Fri(Golf) 5=Sat(Golf) 6=Sun(Rest) 7=Mon(Legs).
    Home-only program — built around current equipment:
    2× 10 kg DBs, 15 + 20 kg fixed barbells, 5 kg medicine ball,
    doorway pull-up bar, TRX suspension trainer.
@@ -967,7 +967,7 @@ const PHASES = {
    Rule: if last set leaves >2 reps in the tank, add a rep next week.
    Once adjustable DBs arrive, use them on every DB movement. */
 const WORKOUTS = {
-  1: {
+  7: {
     name: 'Legs', tag: 'legs', location: 'Home',
     cue: 'Heaviest day. Tempo + single-leg = brutal at low load.',
     exercises: [
@@ -980,7 +980,7 @@ const WORKOUTS = {
       { name: 'Single-Leg Calf Raise',   sets: 4, reps: '15/leg', load: '10 kg DB in hand', cue: 'On stair edge for full stretch. Pause 1 sec at top.', why: 'Calves need stretch + frequency. Unilateral = double the load on each.' },
     ]
   },
-  2: {
+  1: {
     name: 'Push', tag: 'push', location: 'Home',
     cue: 'Chest, shoulders, triceps. Press with intent — slow the eccentric.',
     exercises: [
@@ -993,7 +993,7 @@ const WORKOUTS = {
       { name: 'Diamond Push-Up',          sets: 3, reps: 'AMRAP', load: 'Bodyweight', cue: 'Hands form a diamond under chest. Elbows tucked.', why: 'Tricep + inner chest finisher.' },
     ]
   },
-  3: {
+  2: {
     name: 'Pull', tag: 'pull', location: 'Home',
     cue: 'Back, biceps, rear delts. Pull volume must MATCH your push.',
     exercises: [
@@ -1006,7 +1006,7 @@ const WORKOUTS = {
       { name: 'Dead Hang',              sets: 3, reps: '30s',   load: 'Bodyweight', cue: 'Hang from pull-up bar. Active shoulders — lats engaged, not slack.', why: 'Grip + shoulder decompression. Free upgrade to every pull.' },
     ]
   },
-  7: {
+  3: {
     name: 'Accessory + Core', tag: 'home', location: 'Home',
     cue: 'Higher volume, full ROM, lighter loads. Vanity muscles + core.',
     exercises: [
@@ -1156,7 +1156,7 @@ function getProgramDay(date){
   if(diff < 1)  return { status:'pre',  daysUntil: 1 - diff, day:0, week:0, dow:0 };
   if(diff > CONFIG.programDays) return { status:'post', daysOver: diff - CONFIG.programDays, day: diff, week: 9, dow:0 };
   const week = Math.ceil(diff / 7);
-  const dow  = ((diff - 1) % 7) + 1;     // 1=startDay (Tue=Legs), ..., 7=startDay+6 (Mon=Accessory)
+  const dow  = ((diff - 1) % 7) + 1;     // 1=startDay (Tue=Push), ..., 7=startDay+6 (Mon=Legs)
   return { status:'active', day: diff, week, dow };
 }
 
@@ -1322,8 +1322,8 @@ function renderToday(){
     heroQuote.innerHTML = `<b>This is the easiest day of the whole program.</b> Don't waste it.`;
     document.getElementById('workoutList').innerHTML = '';
     document.getElementById('workoutTag').textContent = 'PRE';
-    document.getElementById('workoutMeta').textContent = `Day 1 (${dateForDay(1)}) — Legs. Be ready.`;
-    if(workoutCard) workoutCard.style.setProperty('--card-accent', PHASE_COLORS.legs);
+    document.getElementById('workoutMeta').textContent = `Day 1 (${dateForDay(1)}) — Push. Be ready.`;
+    if(workoutCard) workoutCard.style.setProperty('--card-accent', PHASE_COLORS.push);
     document.getElementById('mealList').innerHTML = '';
     document.getElementById('fuelMeta').textContent = 'starts day 1';
     document.getElementById('suppList').innerHTML = '';
@@ -1345,7 +1345,7 @@ function renderToday(){
   const { day, week, dow } = status;
   const phase = PHASES[week];
   const workout = WORKOUTS[dow];
-  const isTraining = dow >= 1 && dow <= 4;
+  const isTraining = dow===1 || dow===2 || dow===3 || dow===7;
 
   pill.innerHTML = `<span class="num">${day}</span>&nbsp;/ ${CONFIG.programDays}`;
   if(ringDay) ringDay.textContent = day;
@@ -1445,18 +1445,21 @@ function pctDone(map, total){
 }
 
 function whyTodayMatters(week, dow, day){
-  const isTraining = dow >= 1 && dow <= 4;
+  const isTraining = dow===1 || dow===2 || dow===3 || dow===7;
   if(week===1 && dow===1) return "<b>Day 1.</b> Take a 'before' photo. Establish your top-set numbers. Honest reps only.";
-  if(week===2 && dow===1) return "<b>Week 2 squats.</b> Beat Week 1 by ONE rep or ONE more kilo. That's the whole job today.";
-  if(week===3 && dow===1) return "<b>Volume week.</b> +1 set on squats and RDLs. Same weight is fine — work capacity is the point.";
+  if(week===2 && dow===1) return "<b>Week 2.</b> Beat Week 1 by ONE rep or ONE more kilo on any lift today. That's the job.";
+  if(week===3 && dow===1) return "<b>Volume week.</b> +1 set on every main lift. Same weight is fine — work capacity is the point.";
   if(week===4 && dow===1) return "Halfway. Look at your weight trend. Up 0.5-1 kg? Perfect. Flat? Add 200 kcal.";
-  if(week===5 && dow===1) return "<b>Intensity week.</b> Top squat set at 1-2 reps from failure. PR territory.";
-  if(week===6 && dow===1) return "Last heavy squat week before deload. Don't ego-lift. Earn the rep.";
+  if(week===5 && dow===1) return "<b>Intensity week.</b> Top set at 1-2 reps from failure. PR territory.";
+  if(week===6 && dow===1) return "Last heavy press week before deload. Don't ego-lift. Earn the rep.";
   if(week===7 && dow===1) return "<b>Overreach.</b> Hardest week. By design. Sleep 8h, eat extra carbs, no alcohol.";
   if(week===8 && dow===1) return "<b>Deload.</b> Half the sets, 65% weight. Feels easy — that's the point.";
-  if(week===8 && dow===4) return "Take final photos and measurements TODAY. Book the bloodwork if you haven't.";
-  if(dow===5) return "Golf day. No lifting. Walk the course. Hydrate.";
-  if(dow===7) return "Full rest. Walk 20 min. Mobility 10 min. Stop scrolling and sleep early.";
+  if(week===8 && dow===3) return "Take final photos and measurements TODAY. Book the bloodwork if you haven't.";
+  if(week===2 && dow===7) return "<b>Squat day, Week 2.</b> Beat last week by ONE rep or ONE more kilo. Tempo stays.";
+  if(week===5 && dow===7) return "<b>Heavy squat day.</b> Top set at 1-2 reps from failure. Tempo stays, weight rises.";
+  if(week===7 && dow===7) return "<b>Final hard squat day.</b> Push it. Next week is deload.";
+  if(dow===4 || dow===5) return "Golf day. No lifting. Walk the course. Hydrate.";
+  if(dow===6) return "Full rest. Walk 20 min. Mobility 10 min. Stop scrolling and sleep early.";
   if(isTraining) return `Week ${week}, ${PHASES[week].name.toLowerCase()} phase. ${PHASES[week].rpe} on top sets. ${PHASES[week].note}`;
   return PHASES[week].note;
 }
@@ -1484,12 +1487,13 @@ function renderCalendar(){
       const done = ds && pctDone(ds.workout, workout.exercises.length) === 100 && workout.exercises.length>0;
       const cls = ['cell', 'phase-'+w];
       if(day===todayDay) cls.push('today');
-      if(dow>=5) cls.push(dow===7?'rest':'golf');
+      if(dow===4 || dow===5) cls.push('golf');
+      else if(dow===6) cls.push('rest');
       if(done) cls.push('done');
       const phase = PHASES[w];
       const cell = el('div', {class: cls.join(' '), onclick:()=>jumpToDay(day)}, [
         el('div',{class:'num'}, `D${day}`),
-        el('div',{class:'lbl', style:`color:${dow<=4?phase.color:'var(--text-faint)'}`}, workout.tag.toUpperCase()),
+        el('div',{class:'lbl', style:`color:${(dow===1||dow===2||dow===3||dow===7)?phase.color:'var(--text-faint)'}`}, workout.tag.toUpperCase()),
       ]);
       grid.appendChild(cell);
     }
@@ -1602,7 +1606,7 @@ function renderProgress(){
   if(status.status==='active'){
     for(let d=status.day; d>=1; d--){
       const dow = ((d-1)%7)+1;
-      if(dow>4) continue;
+      if(!(dow===1||dow===2||dow===3||dow===7)) continue;
       const ex = WORKOUTS[dow].exercises.length;
       const ds = state.days[dayKey(d)];
       if(ds && pctDone(ds.workout, ex)===100) streak++;
