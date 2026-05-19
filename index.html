@@ -1201,34 +1201,74 @@ function exerciseLinksRow(name){
   return el('div', {class:'item-links'}, [v, i]);
 }
 
-/* SWIPEABLE EXERCISE IMAGE STRIP — 4 thumbnails per exercise */
+/* EXERCISE → free-exercise-db ID mapping
+   Source: https://github.com/yuhonas/free-exercise-db (open-source, real photos, start+end positions)
+   Each entry has 2 images: 0.jpg (start) and 1.jpg (end). */
+const EXERCISE_IMG_IDS = {
+  // Legs
+  'DB Front Squat (tempo)':    'Goblet_Squat',
+  'Bulgarian Split Squat':     'Split_Squat_with_Dumbbells',
+  'DB Romanian Deadlift':      'Stiff-Legged_Dumbbell_Deadlift',
+  'Walking Lunge':             'Bodyweight_Walking_Lunge',
+  'DB Glute Bridge':           'Barbell_Glute_Bridge',
+  'TRX Hamstring Curl':        'Ball_Leg_Curl',
+  'Single-Leg Calf Raise':     'Dumbbell_Seated_One-Leg_Calf_Raise',
+  // Push
+  'DB Floor Press':            'Dumbbell_Floor_Press',
+  'TRX Push-Up':               'Suspended_Push-Up',
+  'Seated DB Shoulder Press':  'Dumbbell_Shoulder_Press',
+  'Pike Push-Up':              'Pushups',
+  'DB Lateral Raise':          'Side_Lateral_Raise',
+  'TRX Triceps Extension':     'Triceps_Overhead_Extension_with_Rope',
+  'Diamond Push-Up':           'Pushups_Close_and_Wide_Hand_Positions',
+  // Pull
+  'Pull-Up':                   'Pullups',
+  'TRX Inverted Row':          'Suspended_Row',
+  'Single-Arm DB Row':         'One-Arm_Dumbbell_Row',
+  'TRX Y-Fly (Face Pull)':     'Face_Pull',
+  'DB Bicep Curl (tempo)':     'Dumbbell_Bicep_Curl',
+  'DB Hammer Curl':            'Hammer_Curls',
+  'Dead Hang':                 'Pullups',
+  // Accessory
+  'TRX Chest Fly':             'Suspended_Push-Up',
+  'DB Arnold Press':           'Arnold_Dumbbell_Press',
+  'Bent-Over Rear Delt Fly':   'Reverse_Flyes',
+  'DB Curl 21s':               'Dumbbell_Bicep_Curl',
+  'Hanging Leg Raise':         'Hanging_Leg_Raise',
+  'Medicine Ball Slam':        'Overhead_Slam',
+  'Russian Twist':             'Russian_Twist',
+  'Plank':                     'Plank',
+  'Side Plank':                'Side_Bridge',
+};
+
+const EX_DB_BASE = 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
+
+/* SWIPEABLE EXERCISE IMAGE STRIP — uses real exercise-db photos (start+end positions) */
 function exerciseImageStrip(name){
   const stop = (e)=>e.stopPropagation();
-  const cleanName = name
-    .replace(/\(.*?\)/g, '')
-    .replace(/\bDB\b/gi, 'dumbbell')
-    .replace(/\bAMRAP\b/gi, '')
-    .trim();
-  const tag = encodeURIComponent(cleanName.toLowerCase().replace(/\s+/g, ','));
+  const id = EXERCISE_IMG_IDS[name];
+  const urls = id
+    ? [`${EX_DB_BASE}${id}/0.jpg`, `${EX_DB_BASE}${id}/1.jpg`]
+    : [];   // unmapped (e.g. walking / mobility) → no strip
+  if(!urls.length) return el('div',{style:'display:none'});
   const strip = el('div', {class:'ex-img-strip'});
-  for(let i=1; i<=4; i++){
-    const url = `https://loremflickr.com/240/180/${tag},exercise,gym?lock=${i}`;
+  urls.forEach((url, idx)=>{
     const a = el('a', {
       class: 'ex-img',
       href: imageURL(name),
       target: '_blank',
       rel: 'noopener',
       onclick: stop,
-      title: 'Open full Google Images for ' + name
+      title: (idx===0?'Start position':'End position') + ' — click for full Google Images'
     });
     const img = document.createElement('img');
     img.src = url;
-    img.alt = name;
+    img.alt = name + (idx===0?' (start)':' (end)');
     img.loading = 'lazy';
     img.onerror = function(){ a.classList.add('broken'); };
     a.appendChild(img);
     strip.appendChild(a);
-  }
+  });
   return strip;
 }
 
