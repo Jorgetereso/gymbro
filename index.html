@@ -251,18 +251,18 @@
   .item-pill.sets{color:var(--text)}
 
   /* SET BUTTONS — one per set, tap to mark completed */
-  .sets-row{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+  .sets-row{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap;align-items:center}
   .sets-row .label{
-    font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;
-    color:var(--text-faint);align-self:center;text-transform:uppercase;margin-right:2px;
+    font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;
+    color:var(--text-faint);text-transform:uppercase;margin-right:2px;
   }
   .set-btn{
-    min-width:46px;height:34px;padding:0 10px;border-radius:8px;
+    min-width:34px;height:30px;padding:0;border-radius:7px;
     background:var(--bg-2);border:1px solid var(--border);
     color:var(--text-dim);font-family:var(--font-display);
-    font-size:13px;letter-spacing:.06em;
+    font-size:12px;letter-spacing:.04em;
     cursor:pointer;transition:all .15s;
-    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+    display:inline-flex;align-items:center;justify-content:center;gap:3px;
   }
   .set-btn:hover{border-color:var(--accent-dim);color:var(--text);background:var(--surface-3)}
   .set-btn:active{transform:scale(.94)}
@@ -270,7 +270,7 @@
     background:var(--accent);border-color:var(--accent);color:#fff;
     box-shadow:0 0 8px var(--accent-soft);
   }
-  .set-btn.done::after{content:"✓";font-size:13px;font-weight:700}
+  .set-btn.done::after{content:"✓";font-size:11px;font-weight:700}
   .item.done .set-btn{opacity:.85}
   .item-links{display:flex;gap:6px;margin-top:8px}
   .item-link{
@@ -1144,7 +1144,12 @@ const state = loadState();
 function loadState(){
   try{
     const raw = localStorage.getItem(KEY);
-    if(raw) return JSON.parse(raw);
+    if(raw){
+      const s = JSON.parse(raw);
+      // One-time migration: program start shifted from Mon 2026-05-18 → Tue 2026-05-19
+      if(s.startDate === '2026-05-18') s.startDate = '2026-05-19';
+      return s;
+    }
   }catch(e){}
   return {
     startDate: CONFIG.defaultStart,
