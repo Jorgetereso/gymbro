@@ -625,7 +625,7 @@
     </div>
 
     <div class="alert info" style="margin-bottom:14px">
-      Each cell shows day-of-program + workout type. <span class="accent">Mon=Legs</span>, <span style="color:#7dd3fc">Tue=Push</span>, <span style="color:#86efac">Wed=Pull</span>, <span style="color:#fdba74">Thu=Home</span>, Fri/Sat=Golf, Sun=Rest. Click a day to jump there.
+      Each cell shows day-of-program + workout type. <span class="accent">Tue=Legs</span>, <span style="color:#7dd3fc">Wed=Push</span>, <span style="color:#86efac">Thu=Pull</span>, Fri/Sat=Golf, Sun=Rest, <span style="color:#fdba74">Mon=Accessory</span>. Click a day to jump there.
     </div>
 
     <div class="card">
@@ -667,13 +667,13 @@
       <div class="card">
         <h3>Training Split</h3>
         <div class="kv" style="margin-top:6px">
-          <div class="k"><span class="tag legs">Mon</span> Legs (Home)</div><div class="v">Tempo + single-leg</div>
-          <div class="k"><span class="tag push">Tue</span> Push (Home)</div><div class="v">Chest/Shldr/Tri</div>
-          <div class="k"><span class="tag pull">Wed</span> Pull (Home)</div><div class="v">Back/Bi/Rear delt</div>
-          <div class="k"><span class="tag home">Thu</span> Accessory + Core</div><div class="v">TRX/DB/Pull-up bar</div>
+          <div class="k"><span class="tag legs">Tue</span> Legs (Home)</div><div class="v">Tempo + single-leg</div>
+          <div class="k"><span class="tag push">Wed</span> Push (Home)</div><div class="v">Chest/Shldr/Tri</div>
+          <div class="k"><span class="tag pull">Thu</span> Pull (Home)</div><div class="v">Back/Bi/Rear delt</div>
           <div class="k"><span class="tag golf">Fri</span> Golf</div><div class="v">Rest</div>
           <div class="k"><span class="tag golf">Sat</span> Golf</div><div class="v">Rest</div>
           <div class="k"><span class="tag rest">Sun</span> Full Rest</div><div class="v">Walk 30 min</div>
+          <div class="k"><span class="tag home">Mon</span> Accessory + Core</div><div class="v">TRX/DB/Pull-up bar</div>
         </div>
       </div>
 
@@ -699,19 +699,19 @@
       <h3>Workouts In Detail</h3>
       <div class="meta">Click each day for exercises, sets/reps, and form cues. Weekly modifier shown on the TODAY tab.</div>
       <details open>
-        <summary><span class="tag legs">MON</span> Legs (Home)</summary>
+        <summary><span class="tag legs">TUE</span> Legs (Home)</summary>
         <div id="detailMon"></div>
       </details>
       <details>
-        <summary><span class="tag push">TUE</span> Push (Home)</summary>
+        <summary><span class="tag push">WED</span> Push (Home)</summary>
         <div id="detailTue"></div>
       </details>
       <details>
-        <summary><span class="tag pull">WED</span> Pull (Home)</summary>
+        <summary><span class="tag pull">THU</span> Pull (Home)</summary>
         <div id="detailWed"></div>
       </details>
       <details>
-        <summary><span class="tag home">THU</span> Accessory + Core</summary>
+        <summary><span class="tag home">MON</span> Accessory + Core</summary>
         <div id="detailThu"></div>
       </details>
     </div>
@@ -906,7 +906,7 @@
    ============================================================ */
 
 const CONFIG = {
-  defaultStart: '2026-05-18',
+  defaultStart: '2026-05-19',
   programDays: 56,
   defaultStartWeight: 73.5,
   defaultCalories: 2700,
@@ -924,7 +924,8 @@ const PHASES = {
   8: { name: 'DELOAD + MEASURE', setMod: -2, rpe: 'RPE 5-6', color: 'var(--phase-8)', note: 'Half the sets, 60-70% weight. Body supercompensates. Get bloodwork.' },
 };
 
-/* WORKOUT TEMPLATES (dow: 1=Mon..7=Sun)
+/* WORKOUT TEMPLATES (slot = days from startDate; 1=startDay..7=startDay+6)
+   With startDate = Tue: 1=Tue(Legs) 2=Wed(Push) 3=Thu(Pull) 4=Fri(Golf) 5=Sat(Golf) 6=Sun(Rest) 7=Mon(Accessory).
    Home-only program — built around current equipment:
    2× 10 kg DBs, 15 + 20 kg fixed barbells, 5 kg medicine ball,
    doorway pull-up bar, TRX suspension trainer.
@@ -972,7 +973,7 @@ const WORKOUTS = {
       { name: 'Dead Hang',              sets: 3, reps: '30s',   load: 'Bodyweight', cue: 'Hang from pull-up bar. Active shoulders — lats engaged, not slack.', why: 'Grip + shoulder decompression. Free upgrade to every pull.' },
     ]
   },
-  4: {
+  7: {
     name: 'Accessory + Core', tag: 'home', location: 'Home',
     cue: 'Higher volume, full ROM, lighter loads. Vanity muscles + core.',
     exercises: [
@@ -987,9 +988,9 @@ const WORKOUTS = {
       { name: 'Side Plank',              sets: 3, reps: '30s/side', load: 'Bodyweight', cue: 'Stack feet, hips high, breathe.', why: 'Obliques + lateral core for golf rotation.' },
     ]
   },
+  4: { name: 'Golf — Active Rest',  tag: 'golf', location: 'Course',     exercises: [] },
   5: { name: 'Golf — Active Rest',  tag: 'golf', location: 'Course',     exercises: [] },
-  6: { name: 'Golf — Active Rest',  tag: 'golf', location: 'Course',     exercises: [] },
-  7: { name: 'Full Rest',           tag: 'rest', location: 'Anywhere',    exercises: [
+  6: { name: 'Full Rest',           tag: 'rest', location: 'Anywhere',    exercises: [
     { name: 'Walk 20-30 min',       sets: 1, reps: 'easy',   load: '—', cue: 'Outside, no phone.', why: 'Active recovery + cortisol management.' },
     { name: 'Mobility / stretching',sets: 1, reps: '10 min', load: '—', cue: 'Hips, t-spine, shoulders, hamstrings.', why: 'Range of motion = better lifts next week.' },
   ] },
@@ -1122,7 +1123,7 @@ function getProgramDay(date){
   if(diff < 1)  return { status:'pre',  daysUntil: 1 - diff, day:0, week:0, dow:0 };
   if(diff > CONFIG.programDays) return { status:'post', daysOver: diff - CONFIG.programDays, day: diff, week: 9, dow:0 };
   const week = Math.ceil(diff / 7);
-  const dow  = ((diff - 1) % 7) + 1;     // 1=Mon, ..., 7=Sun
+  const dow  = ((diff - 1) % 7) + 1;     // 1=startDay (Tue=Legs), ..., 7=startDay+6 (Mon=Accessory)
   return { status:'active', day: diff, week, dow };
 }
 
@@ -1213,7 +1214,7 @@ function renderToday(){
     setWeekDots(0);
     heroPhase.textContent = `STARTS IN ${status.daysUntil} DAY${status.daysUntil===1?'':'S'}`;
     heroTitle.textContent = 'PRE-LAUNCH';
-    heroSub.textContent = `Program begins Mon ${state.startDate}. Use the days before to buy citrulline, get a scale, take "before" photos, and book your bloodwork.`;
+    heroSub.textContent = `Program begins ${state.startDate}. Use the days before to buy citrulline, get a scale, take "before" photos, and book your bloodwork.`;
     heroQuote.innerHTML = `<b>This is the easiest day of the whole program.</b> Don't waste it.`;
     document.getElementById('workoutList').innerHTML = '';
     document.getElementById('workoutTag').textContent = 'PRE';
@@ -1409,7 +1410,7 @@ function renderPlan(){
   fillExerciseDetail('detailMon', WORKOUTS[1].exercises);
   fillExerciseDetail('detailTue', WORKOUTS[2].exercises);
   fillExerciseDetail('detailWed', WORKOUTS[3].exercises);
-  fillExerciseDetail('detailThu', WORKOUTS[4].exercises);
+  fillExerciseDetail('detailThu', WORKOUTS[7].exercises);
   fillMealDetail();
   fillSuppDetail();
 }
