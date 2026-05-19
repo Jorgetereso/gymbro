@@ -263,6 +263,39 @@
   .item-link.img:hover{background:#11293a;color:#a5e0fc}
   .item-link svg{flex-shrink:0}
 
+  /* EXERCISE IMAGE STRIP — swipeable thumbnails */
+  .ex-img-strip{
+    display:flex;gap:8px;margin-top:8px;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding:2px 0 6px 0;
+    scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.15) transparent;
+  }
+  .ex-img-strip::-webkit-scrollbar{height:4px}
+  .ex-img-strip::-webkit-scrollbar-track{background:transparent}
+  .ex-img-strip::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px}
+  .ex-img{
+    flex:0 0 auto;scroll-snap-align:start;
+    display:block;border-radius:7px;overflow:hidden;
+    border:1px solid var(--border);background:var(--bg-2);
+    transition:transform .15s, border-color .15s;
+    text-decoration:none;position:relative;
+  }
+  .ex-img:hover{transform:scale(1.04);border-color:var(--accent)}
+  .ex-img img{
+    display:block;width:130px;height:90px;object-fit:cover;
+    background:var(--bg-2);
+  }
+  .ex-img.broken img{opacity:.25}
+  .ex-img.broken::after{
+    content:'?';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:var(--text-dim);font-size:24px;font-weight:700;pointer-events:none;
+  }
+  @media (max-width:480px){
+    .ex-img img{width:104px;height:78px}
+  }
+
   /* CALENDAR */
   .cal-wrap{overflow-x:auto;margin:-4px;padding:4px}
   .cal{display:grid;grid-template-columns:auto repeat(7,minmax(64px,1fr));gap:6px;min-width:520px}
@@ -1168,6 +1201,37 @@ function exerciseLinksRow(name){
   return el('div', {class:'item-links'}, [v, i]);
 }
 
+/* SWIPEABLE EXERCISE IMAGE STRIP — 4 thumbnails per exercise */
+function exerciseImageStrip(name){
+  const stop = (e)=>e.stopPropagation();
+  const cleanName = name
+    .replace(/\(.*?\)/g, '')
+    .replace(/\bDB\b/gi, 'dumbbell')
+    .replace(/\bAMRAP\b/gi, '')
+    .trim();
+  const tag = encodeURIComponent(cleanName.toLowerCase().replace(/\s+/g, ','));
+  const strip = el('div', {class:'ex-img-strip'});
+  for(let i=1; i<=4; i++){
+    const url = `https://loremflickr.com/240/180/${tag},exercise,gym?lock=${i}`;
+    const a = el('a', {
+      class: 'ex-img',
+      href: imageURL(name),
+      target: '_blank',
+      rel: 'noopener',
+      onclick: stop,
+      title: 'Open full Google Images for ' + name
+    });
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = name;
+    img.loading = 'lazy';
+    img.onerror = function(){ a.classList.add('broken'); };
+    a.appendChild(img);
+    strip.appendChild(a);
+  }
+  return strip;
+}
+
 function dayKey(programDay){ return 'd' + programDay; }
 function dayState(programDay){
   const k = dayKey(programDay);
@@ -1281,6 +1345,7 @@ function renderToday(){
         el('div',{class:'item-body'},[
           el('div',{class:'item-title'}, titleChildren),
           el('div',{class:'item-sub'}, ex.cue),
+          exerciseImageStrip(ex.name),
           exerciseLinksRow(ex.name),
         ])
       ]);
@@ -1430,6 +1495,7 @@ function fillExerciseDetail(id, list){
       el('div',{class:'item-body'},[
         el('div',{class:'item-title'}, titleChildren),
         el('div',{class:'item-sub'}, [el('b',{},'Form: '), ex.cue, el('br'), el('b',{style:'color:var(--accent-hot)'},'Why: '), ex.why]),
+        exerciseImageStrip(ex.name),
         exerciseLinksRow(ex.name),
       ])
     ]));
