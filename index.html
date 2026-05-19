@@ -249,6 +249,29 @@
   }
   .item-pill.load{color:var(--gold);border-color:#3a2c14;background:#1c140a}
   .item-pill.sets{color:var(--text)}
+
+  /* SET BUTTONS — one per set, tap to mark completed */
+  .sets-row{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+  .sets-row .label{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;
+    color:var(--text-faint);align-self:center;text-transform:uppercase;margin-right:2px;
+  }
+  .set-btn{
+    min-width:46px;height:34px;padding:0 10px;border-radius:8px;
+    background:var(--bg-2);border:1px solid var(--border);
+    color:var(--text-dim);font-family:var(--font-display);
+    font-size:13px;letter-spacing:.06em;
+    cursor:pointer;transition:all .15s;
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+  }
+  .set-btn:hover{border-color:var(--accent-dim);color:var(--text);background:var(--surface-3)}
+  .set-btn:active{transform:scale(.94)}
+  .set-btn.done{
+    background:var(--accent);border-color:var(--accent);color:#fff;
+    box-shadow:0 0 8px var(--accent-soft);
+  }
+  .set-btn.done::after{content:"✓";font-size:13px;font-weight:700}
+  .item.done .set-btn{opacity:.85}
   .item-links{display:flex;gap:6px;margin-top:8px}
   .item-link{
     display:inline-flex;align-items:center;gap:5px;
@@ -1374,17 +1397,54 @@ function renderToday(){
   } else {
     workout.exercises.forEach((ex,i)=>{
       const sets = Math.max(1, (ex.sets||0) + (isTraining?phase.setMod:0));
-      const done = !!ds.workout[i];
+      const entry = ds.workout[i];
+      // Normalize to array of booleans length === sets
+      const setsState = new Array(sets).fill(false);
+      if(entry === true){ for(let s=0;s<sets;s++) setsState[s] = true; }
+      else if(Array.isArray(entry)){ for(let s=0;s<sets;s++) setsState[s] = !!entry[s]; }
+      const done = setsState.every(v=>v);
+
       const titleChildren = [
         el('span',{class:'item-title-text'}, ex.name),
         el('span',{class:'item-pill sets'}, `${sets}×${ex.reps}`),
       ];
       if(ex.load && ex.load !== '—') titleChildren.push(el('span',{class:'item-pill load'}, ex.load));
-      const item = el('div', {class:'item'+(done?' done':''), onclick:()=>{ ds.workout[i]=!ds.workout[i]; save(); renderToday(); }}, [
+
+      const setsRow = el('div',{class:'sets-row'});
+      setsRow.appendChild(el('span',{class:'label'}, 'SETS'));
+      for(let s=0;s<sets;s++){
+        const btn = el('button',{
+          class:'set-btn'+(setsState[s]?' done':''),
+          type:'button',
+          onclick:(e)=>{
+            e.stopPropagation();
+            const cur = ds.workout[i];
+            let arr;
+            if(Array.isArray(cur)){
+              arr = cur.slice();
+              while(arr.length < sets) arr.push(false);
+            } else {
+              arr = new Array(sets).fill(cur === true);
+            }
+            arr[s] = !arr[s];
+            ds.workout[i] = arr;
+            save();
+            renderToday();
+          }
+        }, String(s+1));
+        setsRow.appendChild(btn);
+      }
+
+      const item = el('div', {class:'item'+(done?' done':''), onclick:()=>{
+        const newVal = !done;
+        ds.workout[i] = new Array(sets).fill(newVal);
+        save(); renderToday();
+      }}, [
         el('span',{class:'check'}),
         el('div',{class:'item-body'},[
           el('div',{class:'item-title'}, titleChildren),
           el('div',{class:'item-sub'}, ex.cue),
+          setsRow,
           exerciseImageStrip(ex.name),
           exerciseLinksRow(ex.name),
         ])
@@ -1437,10 +1497,15 @@ function renderToday(){
   document.getElementById('notesInput').value = ci.notes ?? '';
 }
 
+function isItemDone(entry){
+  if(entry === true) return true;
+  if(Array.isArray(entry)) return entry.length>0 && entry.every(v=>v);
+  return false;
+}
 function pctDone(map, total){
   if(!total) return 0;
   let done = 0;
-  for(let i=0;i<total;i++) if(map[i]) done++;
+  for(let i=0;i<total;i++) if(isItemDone(map[i])) done++;
   return Math.round(100 * done / total);
 }
 
