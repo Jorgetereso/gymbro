@@ -36,6 +36,7 @@
     --c-legs:#ff5e52;
     --c-pump:#c084fc;
     --c-full:#fbbf24;
+    --c-temp:#22d3ee;
     --radius:14px;
     --radius-md:10px;
     --radius-sm:8px;
@@ -176,7 +177,7 @@
 
   /* SESSION PICKER */
   .picker{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px;
+    display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:18px;
   }
   .picker .pk{
     padding:14px 6px;border-radius:12px;
@@ -194,8 +195,9 @@
   .picker .pk.legs.active{background:rgba(255,94,82,.14);border-color:var(--c-legs);box-shadow:0 0 0 1px var(--c-legs), 0 0 18px rgba(255,94,82,.3)}
   .picker .pk.pump.active{background:rgba(192,132,252,.14);border-color:var(--c-pump);box-shadow:0 0 0 1px var(--c-pump), 0 0 18px rgba(192,132,252,.28)}
   .picker .pk.full.active{background:rgba(251,191,36,.14);border-color:var(--c-full);box-shadow:0 0 0 1px var(--c-full), 0 0 18px rgba(251,191,36,.28)}
+  .picker .pk.temp.active{background:rgba(34,211,238,.14);border-color:var(--c-temp);box-shadow:0 0 0 1px var(--c-temp), 0 0 18px rgba(34,211,238,.3)}
   @media (max-width:520px){
-    .picker{grid-template-columns:repeat(5,1fr);gap:5px}
+    .picker{grid-template-columns:repeat(3,1fr);gap:5px}
     .picker .pk{padding:11px 3px;font-size:13px;min-height:56px}
     .picker .pk .sub{font-size:8px}
   }
@@ -345,6 +347,7 @@
   .tag.legs{background:rgba(255,94,82,.12);color:#ff897e;border-color:rgba(255,94,82,.25)}
   .tag.pump{background:rgba(192,132,252,.12);color:#cfa2fc;border-color:rgba(192,132,252,.25)}
   .tag.full{background:rgba(251,191,36,.12);color:#fcd277;border-color:rgba(251,191,36,.25)}
+  .tag.temp{background:rgba(34,211,238,.12);color:#5fe5f5;border-color:rgba(34,211,238,.25)}
 
   /* DETAILS */
   details{
@@ -518,8 +521,8 @@
     </div>
 
     <div class="card" style="margin-bottom:14px">
-      <h3>The 5 Sessions</h3>
-      <div class="meta">Tap each one to see exercises and form cues. Numbers and weights are starting points — beat them.</div>
+      <h3>The Sessions</h3>
+      <div class="meta">Tap each one to see exercises and form cues. Numbers and weights are starting points — beat them. <b>TEMP</b> is a custom slot that Claude updates on request.</div>
       <details open>
         <summary><span class="tag push">PUSH</span> Chest · Shoulders · Triceps</summary>
         <div id="planPush"></div>
@@ -539,6 +542,10 @@
       <details>
         <summary><span class="tag full">FULL BODY</span> Squat · Press · Pull — the whole thing</summary>
         <div id="planFull"></div>
+      </details>
+      <details>
+        <summary><span class="tag temp">TEMP</span> Custom — lo que Claude te arme</summary>
+        <div id="planTemp"></div>
       </details>
     </div>
 
@@ -678,9 +685,22 @@ const SESSIONS = {
       { name: 'Hanging Leg Raise',            sets: 2, reps: '12-15', startWeight: 0,  load: 'Bodyweight', cue: 'Curvá la pelvis.', why: 'Core finisher.' },
     ]
   },
+  temp: {
+    name: 'Temp', tag: 'temp', focus: 'Custom · Lo que Claude te arme',
+    blurb: 'Slot custom — la rutina cambia cuando le pidas a Claude algo a medida. Sesión activa: HOME pre-pádel (16/06) — core + brazos + hombros, cero pierna.',
+    exercises: [
+      { name: 'Hanging Leg Raise',            sets: 3, reps: '12',    startWeight: 0,  load: 'Pull-up bar de puerta', cue: 'Sin swing. Levantá con la pelvis, no con las piernas. Bajada lenta y controlada.', why: 'Lower abs sin tocar pierna — perfecto pre-pádel.' },
+      { name: 'Plank',                        sets: 3, reps: '45s',   startWeight: 0,  load: 'Bodyweight', cue: 'Codos bajo los hombros, glúteo apretado, cuerpo en línea recta. No dejes caer la cadera.', why: 'Core estable = saque y volea más sólidos.' },
+      { name: 'Russian Twist (med ball)',     sets: 3, reps: '20',    startWeight: 5,  load: 'Medicine ball 5kg', cue: 'Sentado, rodillas dobladas, talones apenas levantados del piso. Rotá tocando la pelota a cada lado.', why: 'Rotación cargada = potencia en el revés y derecha.' },
+      { name: 'Dumbbell Curl',                sets: 3, reps: '12',    startWeight: 10, load: 'DBs 10kg', cue: 'Sin balanceo. Apretá arriba 1 seg, 2-3 seg bajando.', why: 'Bicep pump liviano — no compromete brazo en el pádel.' },
+      { name: 'Overhead DB Tricep Ext.',      sets: 3, reps: '12',    startWeight: 10, load: 'Un DB 10kg', cue: 'Un DB con las dos manos por encima de la cabeza. Bajá detrás de la nuca, codos cerca de las orejas.', why: 'Tricep stretch = la posición que más estimula crecimiento.' },
+      { name: 'Dumbbell Lateral Raise',       sets: 3, reps: '15',    startWeight: 10, load: 'DBs 10kg (lento)', cue: 'Form > peso. Subí a altura del hombro, bajada en 2-3 seg. Si 10kg es mucho, agarrá más bajo del DB.', why: 'Anchura de hombro — no usás esto fuerte en el pádel.' },
+      { name: 'TRX Row',                      sets: 3, reps: '12',    startWeight: 0,  load: 'TRX', cue: 'Cuerpo derecho como tabla, tirá hasta que las manos lleguen al pecho, apretá omóplatos. Más horizontal = más difícil.', why: 'Postura + pump de espalda liviano. Bonus: te ayuda a no llegar acalambrado de la espalda al pádel.' },
+    ]
+  },
 };
 
-const SESSION_ORDER = ['push','pull','legs','pump','full'];
+const SESSION_ORDER = ['push','pull','legs','pump','full','temp'];
 
 /* BRO MESSAGES */
 const BRO_HYPE = [
@@ -824,6 +844,11 @@ const EXERCISE_IMG_IDS = {
   'Cable Woodchopper':              'Cable_Wood_Chop',
   'Hanging Leg Raise':              'Hanging_Leg_Raise',
   'Cable Crunch':                   'Cable_Crunch',
+  'Plank':                          'Plank',
+  'Russian Twist (med ball)':       'Russian_Twist',
+  'Dumbbell Curl':                  'Dumbbell_Bicep_Curl',
+  'Overhead DB Tricep Ext.':        'Two-Arm_Dumbbell_Triceps_Extension',
+  'TRX Row':                        'Inverted_Row',
 };
 const EX_DB_BASE = 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
 
