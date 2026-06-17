@@ -536,7 +536,7 @@
         <div id="planLegs"></div>
       </details>
       <details>
-        <summary><span class="tag pump">PUMP</span> Arms · Delts · Core</summary>
+        <summary><span class="tag pump">PUMP</span> Arms · Rear Delts · Core</summary>
         <div id="planPump"></div>
       </details>
       <details>
@@ -660,16 +660,16 @@ const SESSIONS = {
     ]
   },
   pump: {
-    name: 'Pump & Core', tag: 'pump', focus: 'Arms · Delts · Core',
-    blurb: 'Your easy day. Short, fun, high-rep. Chase the pump.',
+    name: 'Pump & Core', tag: 'pump', focus: 'Arms · Rear Delts · Core',
+    blurb: 'Tu día fácil. Corto, alto reps. Ejercicios distintos a Push y Pull — sin solapamientos, así los músculos descansan.',
     exercises: [
-      { name: 'EZ-Bar / Cable Curl',          sets: 3, reps: '12-15', startWeight: 15, load: 'EZ-bar or cable', cue: 'Tempo steady, sin balanceo, squeeze hard at the top.', why: 'Bicep pump with an easier wrist angle.' },
-      { name: 'Rope Triceps Pushdown',        sets: 3, reps: '12-15', startWeight: 20, load: 'Cable / rope', cue: 'Separá la cuerda al final, full lockout.', why: 'Tricep pump to match the biceps.' },
-      { name: 'Dumbbell Lateral Raise',       sets: 3, reps: '15-20', startWeight: 6,  load: 'Light DBs', cue: 'Light weight, perfect form, burn it out.', why: 'Wider shoulders faster.' },
-      { name: 'Cable Face Pull',              sets: 3, reps: '20',    startWeight: 25, load: 'Cable', cue: 'High reps, rotación externa, apretá los rear delts.', why: 'Shoulder health + rear-delt volume.' },
-      { name: 'Cable Woodchopper',            sets: 3, reps: '12/side', startWeight: 15, load: 'Cable', cue: 'Diagonal high-to-low cruzando el cuerpo, rotá el tronco.', why: 'Rotational core power — faster, more stable golf swing.' },
-      { name: 'Hanging Leg Raise',            sets: 3, reps: '12-15', startWeight: 0,  load: 'Bodyweight', cue: 'Sin swing, levantá con la pelvis (no las piernas), bajada lenta.', why: 'Lower abs.' },
-      { name: 'Cable Crunch',                 sets: 3, reps: '15-20', startWeight: 25, load: 'Cable', cue: 'Arrodillado, cuerda atrás del cuello, curvá las costillas hacia las caderas.', why: 'Loaded ab work actually grows the six-pack.' },
+      { name: 'EZ-Bar / Cable Curl',          sets: 3, reps: '12-15', startWeight: 15, load: 'EZ-bar o cable', cue: 'Tempo parejo, sin balanceo, apretá fuerte arriba.', why: 'Pump de bíceps con ángulo de muñeca distinto al curl de Pull.' },
+      { name: 'Incline Dumbbell Curl',        sets: 3, reps: '10-12', startWeight: 8,  load: 'Dumbbells', cue: 'Banco a 60°, brazos colgando libres, bajada lenta — buscás el stretch máximo abajo.', why: 'Long-head del bíceps — el ángulo que el curl parado de Pull no toca.' },
+      { name: 'Rope Triceps Pushdown',        sets: 3, reps: '12-15', startWeight: 20, load: 'Cable / rope', cue: 'Separá la cuerda al final, full lockout.', why: 'Pump de tríceps con rope — distinto al pushdown con barra de Push.' },
+      { name: 'Bench Dip / Tricep Dip',       sets: 3, reps: '10-12', startWeight: 0,  load: 'Peso corporal (banco o máquina de dips)', cue: 'Codos hacia atrás (no abiertos), bajá hasta 90°, empujá arriba con tríceps. Si sos fuerte, sumá disco en las piernas.', why: 'Compuesto de tríceps — estímulo distinto a los cables de Push.' },
+      { name: 'Reverse Pec Deck',             sets: 3, reps: '15',    startWeight: 25, load: 'Machine', cue: 'Brazos casi rectos, abrí hacia atrás llevando los codos a la espalda, apretá los rear delts 1 seg.', why: 'Rear delts aislados — Push y Pull casi no los tocan en serio.' },
+      { name: 'Cable Woodchopper',            sets: 3, reps: '12/side', startWeight: 15, load: 'Cable', cue: 'Diagonal de arriba hacia abajo cruzando el cuerpo, rotá el tronco.', why: 'Potencia rotacional — pádel y golf más explosivos.' },
+      { name: 'Hanging Leg Raise',            sets: 3, reps: '12-15', startWeight: 0,  load: 'Peso corporal', cue: 'Sin swing, levantá con la pelvis (no las piernas), bajada lenta.', why: 'Lower abs.' },
     ]
   },
   full: {
@@ -849,6 +849,9 @@ const EXERCISE_IMG_IDS = {
   'Dumbbell Curl':                  'Dumbbell_Bicep_Curl',
   'Overhead DB Tricep Ext.':        'Two-Arm_Dumbbell_Triceps_Extension',
   'TRX Row':                        'Inverted_Row',
+  'Incline Dumbbell Curl':          'Incline_Dumbbell_Curl',
+  'Bench Dip / Tricep Dip':         'Bench_Dips',
+  'Reverse Pec Deck':               'Reverse_Flyes',
 };
 const EX_DB_BASE = 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
 
