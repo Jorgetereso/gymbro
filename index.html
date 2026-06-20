@@ -687,15 +687,14 @@ const SESSIONS = {
   },
   temp: {
     name: 'Temp', tag: 'temp', focus: 'Custom · Lo que Claude te arme',
-    blurb: 'Slot custom — la rutina cambia cuando le pidas a Claude algo a medida. Sesión activa: HOME pre-pádel (16/06) — core + brazos + hombros, cero pierna.',
+    blurb: 'Slot custom — la rutina cambia cuando le pidas a Claude algo a medida. Sesión activa: HOME LEGS 30 min (20/06) — cuádriceps + glúteos + isquios + gemelos con DBs 10kg y KBs 15/20. 60-90s de descanso entre series.',
     exercises: [
-      { name: 'Hanging Leg Raise',            sets: 3, reps: '12',    startWeight: 0,  load: 'Pull-up bar de puerta', cue: 'Sin swing. Levantá con la pelvis, no con las piernas. Bajada lenta y controlada.', why: 'Lower abs sin tocar pierna — perfecto pre-pádel.' },
-      { name: 'Plank',                        sets: 3, reps: '45s',   startWeight: 0,  load: 'Bodyweight', cue: 'Codos bajo los hombros, glúteo apretado, cuerpo en línea recta. No dejes caer la cadera.', why: 'Core estable = saque y volea más sólidos.' },
-      { name: 'Russian Twist (med ball)',     sets: 3, reps: '20',    startWeight: 5,  load: 'Medicine ball 5kg', cue: 'Sentado, rodillas dobladas, talones apenas levantados del piso. Rotá tocando la pelota a cada lado.', why: 'Rotación cargada = potencia en el revés y derecha.' },
-      { name: 'Dumbbell Curl',                sets: 3, reps: '12',    startWeight: 10, load: 'DBs 10kg', cue: 'Sin balanceo. Apretá arriba 1 seg, 2-3 seg bajando.', why: 'Bicep pump liviano — no compromete brazo en el pádel.' },
-      { name: 'Overhead DB Tricep Ext.',      sets: 3, reps: '12',    startWeight: 10, load: 'Un DB 10kg', cue: 'Un DB con las dos manos por encima de la cabeza. Bajá detrás de la nuca, codos cerca de las orejas.', why: 'Tricep stretch = la posición que más estimula crecimiento.' },
-      { name: 'Dumbbell Lateral Raise',       sets: 3, reps: '15',    startWeight: 10, load: 'DBs 10kg (lento)', cue: 'Form > peso. Subí a altura del hombro, bajada en 2-3 seg. Si 10kg es mucho, agarrá más bajo del DB.', why: 'Anchura de hombro — no usás esto fuerte en el pádel.' },
-      { name: 'TRX Row',                      sets: 3, reps: '12',    startWeight: 0,  load: 'TRX', cue: 'Cuerpo derecho como tabla, tirá hasta que las manos lleguen al pecho, apretá omóplatos. Más horizontal = más difícil.', why: 'Postura + pump de espalda liviano. Bonus: te ayuda a no llegar acalambrado de la espalda al pádel.' },
+      { name: 'Goblet Squat (KB 20kg)',           sets: 4, reps: '12',      startWeight: 20, load: 'KB 20kg al pecho', cue: 'KB apretada contra el pecho con las dos manos. Pies a la anchura de los hombros, dedos un poco afuera. Bajá hasta que los codos toquen las rodillas — depth completo. Pecho arriba. Empujá del piso con los talones.', why: 'Tu sentadilla pesada del día. El goblet con KB 20kg te obliga a forma perfecta y carga bien cuádriceps + glúteo.' },
+      { name: 'Bulgarian Split Squat (DBs)',      sets: 3, reps: '10/pierna', startWeight: 10, load: 'DBs 10kg en cada mano', cue: 'Pie de atrás en el sofá o silla. Paso largo. Bajá derecho — la rodilla de adelante NO se va más allá del pie. Empujá con el talón delantero. Hacé las 10 de una pierna seguidas, después la otra.', why: 'Mata cuádriceps + glúteo de cada pierna por separado. Cubre el desequilibrio que la sentadilla esconde.' },
+      { name: 'Romanian Deadlift (2 KBs)',        sets: 3, reps: '12',      startWeight: 35, load: 'KB 20kg + KB 15kg, una en cada mano', cue: 'Rodillas blandas (NO dobladas). Empujá la cadera hacia atrás como cerrando una puerta con el culo. Las KBs rozan los muslos en la bajada. Bajá hasta sentir stretch en isquios — no más. Cadera adelante para volver, apretá glúteo arriba.', why: 'Isquios + glúteos + lumbares. Con 35kg total cargás bien el patrón sin riesgo de columna.' },
+      { name: 'KB Swing (KB 20kg)',               sets: 3, reps: '20',      startWeight: 20, load: 'KB 20kg entre las piernas', cue: 'Bisagra de cadera, NO sentadilla. KB cae entre las piernas, bracé el core, explotá con la cadera hacia adelante y la KB vuela a la altura del pecho. Los brazos solo guían — la fuerza viene del culo.', why: 'Glúteo explosivo + cardio + posterior chain. Sumás potencia rotacional para pádel/golf.' },
+      { name: 'Walking Lunge (DBs)',              sets: 3, reps: '12 pasos', startWeight: 10, load: 'DBs 10kg en cada mano', cue: 'Pasos largos por el pasillo. Rodilla de atrás casi al piso, empujá con el talón de adelante. Si no tenés espacio, reverse lunge en el lugar.', why: 'Glúteo bajo stretch + cuádriceps. El paso largo es clave — paso corto es trabajo de rodilla.' },
+      { name: 'Standing Calf Raise (DBs)',        sets: 3, reps: '20',      startWeight: 20, load: 'DBs 10kg en cada mano (parado en un escalón si podés)', cue: 'Si tenés escalón, parate con el antepié y dejá colgar el talón abajo para stretch completo. Subí lo más alto que puedas al dedo gordo, pausá 1 seg arriba, bajada lenta.', why: 'Gemelos necesitan reps altas + stretch. Esto se lo damos.' },
     ]
   },
 };
@@ -852,6 +851,12 @@ const EXERCISE_IMG_IDS = {
   'Incline Dumbbell Curl':          'Incline_Dumbbell_Curl',
   'Bench Dip / Tricep Dip':         'Bench_Dips',
   'Reverse Pec Deck':               'Reverse_Flyes',
+  'Goblet Squat (KB 20kg)':         'Goblet_Squat',
+  'Bulgarian Split Squat (DBs)':    'Dumbbell_Bench_Squat',
+  'Romanian Deadlift (2 KBs)':      'Romanian_Deadlift',
+  'KB Swing (KB 20kg)':             'Kettlebell_Swing',
+  'Walking Lunge (DBs)':            'Dumbbell_Lunges',
+  'Standing Calf Raise (DBs)':      'Standing_Calf_Raises',
 };
 const EX_DB_BASE = 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
 
