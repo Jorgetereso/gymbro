@@ -864,11 +864,46 @@ const EXERCISE_IMG_IDS = {
   'DB Bench Press':                 'Dumbbell_Bench_Press',
   'Lat Pulldown':                   'Wide-Grip_Lat_Pulldown',
   'DB Shoulder Press (Seated)':     'Dumbbell_Shoulder_Press',
+  /* HOME PUMP & CORE (temp 18/07) */
+  'DB Curl (supinado)':             'Dumbbell_Bicep_Curl',
+  'TRX Bicep Curl':                 'Incline_Dumbbell_Curl',
+  'KB Skullcrusher (2 manos)':      'EZ-Bar_Skullcrusher',
+  'TRX Triceps Extension':          'Cable_Rope_Overhead_Triceps_Extension',
+  'Bench Dip':                      'Bench_Dips',
+  'DB Rear Delt Fly (bent-over)':   'Reverse_Flyes',
+  'TRX Face Pull':                  'Face_Pull',
+  'KB Woodchopper':                 'Standing_Cable_Wood_Chop',
+  'KB Suitcase Carry / Farmer Hold':'Farmers_Walk',
+};
+
+/* Some exercises have no photo of the exact home variant — the strip shows the
+   closest movement pattern. This is what to actually search on YouTube. */
+const EXERCISE_SEARCH_NAME = {
+  'DB Curl (supinado)':             'dumbbell bicep curl',
+  'TRX Bicep Curl':                 'TRX bicep curl',
+  'KB Skullcrusher (2 manos)':      'kettlebell skullcrusher two hands',
+  'TRX Triceps Extension':          'TRX triceps extension',
+  'Bench Dip':                      'bench dips',
+  'DB Rear Delt Fly (bent-over)':   'bent over dumbbell rear delt fly',
+  'TRX Face Pull':                  'TRX face pull',
+  'KB Woodchopper':                 'kettlebell woodchopper',
+  'KB Suitcase Carry / Farmer Hold':'kettlebell suitcase carry',
 };
 const EX_DB_BASE = 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
 
-function videoURL(name){ return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(name + ' proper form tutorial'); }
-function imageURL(name){ return 'https://www.google.com/search?tbm=isch&q=' + encodeURIComponent(name + ' exercise muscles worked'); }
+/* Photos that show a close cousin, not the exact home variant — say so. */
+const EXERCISE_IMG_NOTE = {
+  'TRX Bicep Curl':                 'Foto: curl inclinado con DBs. Mismo ángulo de brazo, vos colgado del TRX.',
+  'KB Skullcrusher (2 manos)':      'Foto: con barra EZ. Mismo movimiento, vos con la KB tomada de los cuernos.',
+  'TRX Triceps Extension':          'Foto: extensión con polea. Vos igual pero de pie, inclinado, con el TRX.',
+  'TRX Face Pull':                  'Foto: face pull con polea. Mismo tirón de codos altos, vos con el TRX.',
+  'KB Woodchopper':                 'Foto: con polea. Mismo patrón diagonal, vos con la KB de 15kg.',
+  'KB Suitcase Carry / Farmer Hold':'Foto: farmer walk con 2 pesos. Vos hacelo con UNA sola mano (ahí está el laburo del oblicuo).',
+};
+
+function searchName(name){ return EXERCISE_SEARCH_NAME[name] || name; }
+function videoURL(name){ return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(searchName(name) + ' proper form tutorial'); }
+function imageURL(name){ return 'https://www.google.com/search?tbm=isch&q=' + encodeURIComponent(searchName(name) + ' exercise muscles worked'); }
 
 function exerciseImageStrip(name){
   const stop = (e)=>e.stopPropagation();
