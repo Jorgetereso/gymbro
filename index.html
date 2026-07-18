@@ -218,6 +218,16 @@
     background:var(--bg-2);border:1px solid var(--border);padding:2px 8px;border-radius:999px;letter-spacing:.02em;
   }
   .ex-cue{color:var(--text-dim);font-size:13px;margin-top:4px;line-height:1.5}
+  .ex-load{
+    margin-top:6px;font-size:12px;color:var(--text);
+    background:var(--bg-2);border:1px solid var(--border);border-radius:7px;padding:5px 9px;
+    display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;
+  }
+  .ex-load .lbl{color:var(--text-faint);font-weight:700;letter-spacing:.06em;font-size:9.5px;font-family:var(--font-mono)}
+  .ex-img-note{
+    font-size:11px;color:var(--text-faint);line-height:1.45;
+    margin:-2px 0 4px 0;font-style:italic;
+  }
   .ex-last{
     margin-top:8px;font-family:var(--font-mono);font-size:11.5px;color:var(--gold);
     background:#1c140a;border:1px solid #3a2c14;border-radius:7px;padding:6px 10px;
@@ -687,18 +697,18 @@ const SESSIONS = {
   },
   temp: {
     name: 'Temp', tag: 'temp', focus: 'Custom · Lo que Claude te arme',
-    blurb: 'Slot custom — la rutina cambia cuando le pidas a Claude algo a medida. Sesión activa: HOME PUMP & CORE (18/07) — el mismo día Pump pero en casa, con DBs 10kg, kettlebells 15/20kg, TRX y barra de dominadas. Brazos + rear delts + core. Reps altas, 45-60s de descanso. Como no tenés cables, el TRX y el ángulo del cuerpo son tu "selector de peso": cuanto más horizontal te ponés, más pesa.',
+    blurb: 'Slot custom — la rutina cambia cuando le pidas a Claude algo a medida. Sesión activa: HOME PUMP & CORE (18/07). SOLO con lo que tenés en casa: DBs de 10kg, kettlebell de 15, kettlebell de 20, TRX, barra de dominadas y el piso. Nada de banco, nada de máquinas, nada de cables. Brazos + rear delts + core, reps altas, 45-60s de descanso. Sin cables, el TRX es tu selector de peso: cuanto más horizontal ponés el cuerpo, más pesa.',
     exercises: [
-      { name: 'DB Curl (supinado)',               sets: 3, reps: '12-15',   startWeight: 10, load: 'DBs 10kg cada mano', cue: 'Parado, codos pegados al costado y FIJOS. Subí girando la palma hacia arriba, apretá el bíceps 1 seg arriba, bajá en 3 segundos. Cero balanceo de espalda — si necesitás impulso, hacé reps más lentas en vez de más peso.', why: 'Reemplaza el EZ-bar curl. Con 10kg vas a llegar a 15 reps, así que el estímulo viene del tempo lento, no de la carga.' },
-      { name: 'TRX Bicep Curl',                   sets: 3, reps: '12-15',   startWeight: 0,  load: 'TRX (regulá la dificultad caminando los pies adelante)', cue: 'Agarre supinado, brazos estirados, cuerpo inclinado atrás. Los codos quedan ALTOS y quietos — solo se mueve el antebrazo. Llevá las manos a la frente. Cuanto más adelantás los pies, más pesado.', why: 'Sustituye el incline curl: el bíceps trabaja con el brazo adelantado y en stretch, ángulo que el curl parado no toca.' },
-      { name: 'KB Skullcrusher (2 manos)',        sets: 3, reps: '12',      startWeight: 15, load: 'Kettlebell 15kg (o 20 si va fácil)', cue: 'Acostado en el piso o banco, KB tomada de los cuernos con las dos manos, brazos estirados sobre el pecho. Bajá SOLO desde el codo hasta que la KB pase la frente, codos apuntando al techo. Estirá sin trabar.', why: 'Long head del tríceps bajo stretch — la porción más grande y la que más crece.' },
-      { name: 'TRX Triceps Extension',            sets: 3, reps: '12-15',   startWeight: 0,  load: 'TRX', cue: 'De pie mirando el anclaje, cuerpo inclinado adelante, manos arriba de la cabeza. Bajá doblando SOLO los codos (van hacia adelante, al lado de las orejas), estirá empujando. Codos siempre altos y cerrados.', why: 'Reemplaza el rope pushdown. Tensión constante y podés graduar el peso con la inclinación.' },
-      { name: 'Bench Dip',                        sets: 3, reps: '10-12',   startWeight: 0,  load: 'Peso corporal, en el borde de una silla/sillón/cama firme', cue: 'Manos al borde, dedos hacia adelante. Codos hacia ATRÁS (no abiertos), bajá hasta 90°, empujá con el tríceps. Piernas estiradas = más difícil, flexionadas = más fácil. Si va muy fácil, apoyá una DB en las piernas.', why: 'El único compuesto de tríceps del día — completa lo que las aislaciones no dan.' },
-      { name: 'DB Rear Delt Fly (bent-over)',     sets: 3, reps: '15',      startWeight: 10, load: 'DBs 10kg — si no sentís el rear delt, usá menos o hacelo más lento', cue: 'Bisagra de cadera hasta que el torso quede casi paralelo al piso, espalda recta. Brazos casi rectos colgando. Abrí hacia los costados llevando los CODOS al techo, apretá 1 seg. No encojas los hombros ni uses la lumbar.', why: 'Reemplaza el reverse pec deck. Rear delts = hombro redondo y postura; Push y Pull casi no los tocan.' },
-      { name: 'TRX Face Pull',                    sets: 3, reps: '15',      startWeight: 0,  load: 'TRX', cue: 'Agarre pronado, inclinado atrás. Tirá llevando las manos a los costados de la cara con los CODOS ALTOS (a la altura del hombro). Apretá escápulas 1 seg. Cuanto más horizontal el cuerpo, más pesa.', why: 'Rear delt + trapecio medio desde otro ángulo. Antídoto directo a los hombros adelantados de escritorio.' },
-      { name: 'KB Woodchopper',                   sets: 3, reps: '12/lado', startWeight: 15, load: 'Kettlebell 15kg', cue: 'Parado, pies a la anchura de hombros. KB con las dos manos arriba de un hombro, bajala en diagonal hasta la cadera opuesta ROTANDO el tronco y pivoteando el pie de atrás. Controlá la vuelta, no la tires.', why: 'Potencia rotacional — el mismo patrón del swing de golf. Reemplaza el cable woodchopper.' },
-      { name: 'Hanging Leg Raise',                sets: 3, reps: '12-15',   startWeight: 0,  load: 'Barra de dominadas', cue: 'Colgado, sin swing. Levantá curvando la PELVIS hacia arriba (no solo las piernas), bajada lenta. Si no llegás a 12, hacé rodillas al pecho.', why: 'Lower abs — tenés la barra, aprovechala. Es el mejor ejercicio de abdomen bajo que existe.' },
-      { name: 'KB Suitcase Carry / Farmer Hold',  sets: 3, reps: '40 seg/lado', startWeight: 20, load: 'Kettlebell 20kg, una sola mano', cue: 'KB en UNA mano, caminá (o quedate parado) con el torso 100% derecho — no te inclines hacia el lado de la KB. Apretá el abdomen del lado libre para no torcerte. Hombros abajo y atrás.', why: 'Core anti-lateral: el oblicuo trabaja frenando la inclinación. Finisher brutal y silencioso, ideal para casa.' },
+      { name: 'DB Curl (supinado)',               sets: 3, reps: '12-15',   startWeight: 10, load: 'Tus DBs de 10kg, uno en cada mano. De pie.', cue: 'Parado, codos pegados al costado y FIJOS. Subí girando la palma hacia arriba, apretá el bíceps 1 seg arriba, bajá en 3 segundos. Cero balanceo de espalda — si necesitás impulso, hacé la bajada más lenta en vez de tirar con el cuerpo.', why: 'Con 10kg vas a llegar a 15 reps, así que el estímulo tiene que venir del tempo lento, no de la carga.' },
+      { name: 'TRX Bicep Curl',                   sets: 3, reps: '12-15',   startWeight: 0,  load: 'TRX + tu peso corporal. Regulás la dificultad caminando los pies adelante o atrás.', cue: 'Agarre supinado (palmas arriba), brazos estirados, cuerpo inclinado hacia atrás. Los codos quedan ALTOS y quietos — solo se mueve el antebrazo. Llevá las manos a la frente. Cuanto más adelantás los pies, más pesado.', why: 'Bíceps con el brazo adelantado y en stretch — ángulo que el curl parado no toca. Cero equipamiento extra.' },
+      { name: 'KB Floor Skullcrusher',            sets: 3, reps: '12',      startWeight: 15, load: 'Kettlebell de 15kg, acostado en el PISO (no hace falta banco).', cue: 'Acostado boca arriba en el piso, rodillas flexionadas. KB tomada de los cuernos con las dos manos, brazos estirados sobre el pecho. Bajá SOLO desde el codo hasta que la KB pase por encima de la frente — los codos apuntan al techo y no se abren. Estirá sin trabar el codo.', why: 'Long head del tríceps bajo stretch — la porción más grande y la que más crece. El piso además te frena si perdés el control.' },
+      { name: 'TRX Triceps Extension',            sets: 3, reps: '12-15',   startWeight: 0,  load: 'TRX + peso corporal.', cue: 'De pie mirando el anclaje, cuerpo inclinado hacia adelante, manos arriba de la cabeza. Bajá doblando SOLO los codos (van hacia adelante, al lado de las orejas), estirá empujando. Codos siempre altos y cerrados. Si va muy pesado, parate más vertical.', why: 'Reemplaza el pushdown de polea: tensión constante y graduás la carga con la inclinación del cuerpo.' },
+      { name: 'Diamond Push-Up (piso)',           sets: 3, reps: '10-12',   startWeight: 0,  load: 'Peso corporal, en el piso. Nada más.', cue: 'Manos juntas formando un diamante (índices y pulgares tocándose) debajo del pecho. Codos rozando el cuerpo, NO abiertos. Bajá hasta que el pecho toque las manos, empujá. Si es muy duro, apoyá las rodillas — no rompas la técnica.', why: 'El compuesto de tríceps del día, sin banco ni sillas. Suma pecho interno de yapa.' },
+      { name: 'DB Rear Delt Fly (bent-over)',     sets: 3, reps: '15',      startWeight: 10, load: 'DBs de 10kg. De pie, sin banco. Si no sentís el rear delt, hacelo más lento.', cue: 'Bisagra de cadera hasta que el torso quede casi paralelo al piso, espalda recta (NO redondeada). Brazos casi rectos colgando. Abrí hacia los costados llevando los CODOS al techo, apretá 1 seg. No encojas los hombros ni tires con la lumbar.', why: 'Rear delts = hombro redondo y postura. Push y Pull casi no los tocan.' },
+      { name: 'TRX Face Pull',                    sets: 3, reps: '15',      startWeight: 0,  load: 'TRX + peso corporal.', cue: 'Agarre pronado, cuerpo inclinado hacia atrás. Tirá llevando las manos a los costados de la cara con los CODOS ALTOS (a la altura del hombro). Apretá escápulas 1 seg. Cuanto más horizontal el cuerpo, más pesa.', why: 'Rear delt + trapecio medio desde otro ángulo. Antídoto directo a los hombros adelantados de escritorio.' },
+      { name: 'KB Woodchopper',                   sets: 3, reps: '12/lado', startWeight: 15, load: 'Kettlebell de 15kg, con las dos manos. De pie.', cue: 'Pies a la anchura de hombros. KB con las dos manos arriba de un hombro, bajala en diagonal hasta la cadera opuesta ROTANDO el tronco y pivoteando el pie de atrás. Controlá la vuelta, no la tires de un envión.', why: 'Potencia rotacional — el mismo patrón del swing de golf.' },
+      { name: 'Hanging Leg Raise',                sets: 3, reps: '12-15',   startWeight: 0,  load: 'Tu barra de dominadas.', cue: 'Colgado, sin swing. Levantá curvando la PELVIS hacia arriba (no solo las piernas), bajada lenta. Si no llegás a 12, hacé rodillas al pecho.', why: 'Lower abs — tenés la barra, aprovechala. El mejor ejercicio de abdomen bajo que existe.' },
+      { name: 'KB Suitcase Carry',                sets: 3, reps: '40 seg/lado', startWeight: 20, load: 'Kettlebell de 20kg en UNA sola mano.', cue: 'KB en una mano, caminá por la casa (o quedate parado) con el torso 100% derecho — no te inclines hacia el lado de la KB. Apretá el abdomen del lado libre para no torcerte. Hombros abajo y atrás. Cambiá de mano.', why: 'Core anti-lateral: el oblicuo trabaja frenando la inclinación. Finisher silencioso, ideal para casa.' },
     ]
   },
 };
@@ -818,6 +828,10 @@ function el(tag, attrs={}, children=[]){
    EXERCISE IMAGES & LINKS
    ============================================================ */
 
+/* Bump on every routine/logic change so the version on screen tells you whether
+   your phone is showing the current build or a cached one. */
+const APP_BUILD = 'build 18-07-b';
+
 const EXERCISE_IMG_IDS = {
   'Barbell Bench Press':            'Barbell_Bench_Press_-_Medium_Grip',
   'Incline Dumbbell Press':         'Incline_Dumbbell_Press',
@@ -867,13 +881,13 @@ const EXERCISE_IMG_IDS = {
   /* HOME PUMP & CORE (temp 18/07) */
   'DB Curl (supinado)':             'Dumbbell_Bicep_Curl',
   'TRX Bicep Curl':                 'Incline_Dumbbell_Curl',
-  'KB Skullcrusher (2 manos)':      'EZ-Bar_Skullcrusher',
+  'KB Floor Skullcrusher':          'EZ-Bar_Skullcrusher',
   'TRX Triceps Extension':          'Cable_Rope_Overhead_Triceps_Extension',
-  'Bench Dip':                      'Bench_Dips',
+  'Diamond Push-Up (piso)':         'Push-Ups_-_Close_Triceps_Position',
   'DB Rear Delt Fly (bent-over)':   'Reverse_Flyes',
   'TRX Face Pull':                  'Face_Pull',
   'KB Woodchopper':                 'Standing_Cable_Wood_Chop',
-  'KB Suitcase Carry / Farmer Hold':'Farmers_Walk',
+  'KB Suitcase Carry':              'Farmers_Walk',
 };
 
 /* Some exercises have no photo of the exact home variant — the strip shows the
@@ -881,24 +895,24 @@ const EXERCISE_IMG_IDS = {
 const EXERCISE_SEARCH_NAME = {
   'DB Curl (supinado)':             'dumbbell bicep curl',
   'TRX Bicep Curl':                 'TRX bicep curl',
-  'KB Skullcrusher (2 manos)':      'kettlebell skullcrusher two hands',
+  'KB Floor Skullcrusher':          'kettlebell floor skullcrusher two hands',
   'TRX Triceps Extension':          'TRX triceps extension',
-  'Bench Dip':                      'bench dips',
+  'Diamond Push-Up (piso)':         'diamond push up form',
   'DB Rear Delt Fly (bent-over)':   'bent over dumbbell rear delt fly',
   'TRX Face Pull':                  'TRX face pull',
   'KB Woodchopper':                 'kettlebell woodchopper',
-  'KB Suitcase Carry / Farmer Hold':'kettlebell suitcase carry',
+  'KB Suitcase Carry':              'kettlebell suitcase carry',
 };
 const EX_DB_BASE = 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
 
 /* Photos that show a close cousin, not the exact home variant — say so. */
 const EXERCISE_IMG_NOTE = {
   'TRX Bicep Curl':                 'Foto: curl inclinado con DBs. Mismo ángulo de brazo, vos colgado del TRX.',
-  'KB Skullcrusher (2 manos)':      'Foto: con barra EZ. Mismo movimiento, vos con la KB tomada de los cuernos.',
+  'KB Floor Skullcrusher':          'Foto: con barra EZ y banco. Vos: en el PISO, con la KB de 15 tomada de los cuernos.',
   'TRX Triceps Extension':          'Foto: extensión con polea. Vos igual pero de pie, inclinado, con el TRX.',
   'TRX Face Pull':                  'Foto: face pull con polea. Mismo tirón de codos altos, vos con el TRX.',
-  'KB Woodchopper':                 'Foto: con polea. Mismo patrón diagonal, vos con la KB de 15kg.',
-  'KB Suitcase Carry / Farmer Hold':'Foto: farmer walk con 2 pesos. Vos hacelo con UNA sola mano (ahí está el laburo del oblicuo).',
+  'KB Woodchopper':                 'Foto: con polea. Mismo patrón diagonal, vos con la KB de 15.',
+  'KB Suitcase Carry':              'Foto: farmer walk con 2 pesos. Vos: UNA sola mano con la KB de 20 (ahí está el laburo del oblicuo).',
 };
 
 function searchName(name){ return EXERCISE_SEARCH_NAME[name] || name; }
@@ -922,7 +936,9 @@ function exerciseImageStrip(name){
     a.appendChild(img);
     strip.appendChild(a);
   });
-  return strip;
+  const note = EXERCISE_IMG_NOTE[name];
+  if(!note) return strip;
+  return el('div',{},[ strip, el('div',{class:'ex-img-note'}, note) ]);
 }
 
 function exerciseLinks(name){
@@ -951,21 +967,33 @@ function lastSessionOf(type, beforeDate){
 
 /* Last sets you did for a specific exercise (by name) in a given session type.
    Returns {date, sets:[{w,r,done}]} or null. */
+/* Find the last time this EXERCISE was done — matched by name, never by position.
+   Matching by position is wrong whenever the routine changed between sessions
+   (the TEMP slot changes constantly), because position 3 of the old routine is a
+   different exercise than position 3 of the new one. That mismatch is how a
+   40kg barbell weight ended up suggested on a 10kg dumbbell curl. */
 function lastSetsForExercise(type, exName, beforeDate){
   const dates = Object.keys(state.log)
     .filter(d => d !== beforeDate && state.log[d] && state.log[d].type === type)
     .sort().reverse();
+  const curFp = routineFingerprint(type);
   for(const d of dates){
     const sess = state.log[d];
-    const def = SESSIONS[type];
-    if(!def) continue;
-    for(let i=0;i<def.exercises.length;i++){
-      if(def.exercises[i].name === exName){
-        const entry = sess.exercises && sess.exercises[i];
-        if(entry && entry.sets && entry.sets.some(s=>s.done)){
-          return { date: d, sets: entry.sets.filter(s=>s.done) };
-        }
+    if(!sess.exercises) continue;
+    for(const key of Object.keys(sess.exercises)){
+      const entry = sess.exercises[key];
+      if(!entry || !entry.sets || !entry.sets.some(s=>s.done)) continue;
+      /* Preferred: the name was recorded at log time. */
+      if(entry.name){
+        if(entry.name !== exName) continue;
+      } else {
+        /* Legacy entry with no name: only trust its position if that session
+           ran the exact same routine we're looking at now. */
+        const def = SESSIONS[type];
+        if(!def || sess.fp !== curFp) continue;
+        if(!def.exercises[key] || def.exercises[key].name !== exName) continue;
       }
+      return { date: d, sets: entry.sets.filter(s=>s.done) };
     }
   }
   return null;
@@ -979,10 +1007,25 @@ function formatSetSummary(sets){
    TODAY — render & wire
    ============================================================ */
 
+/* Sets are stored by position (0,1,2...). If the routine definition changes
+   under an entry that already exists — e.g. the TEMP slot gets a new routine —
+   position 0 would inherit the old position 0's weight, showing a 40kg barbell
+   number on a 10kg dumbbell curl. So we fingerprint the exercise names and
+   drop stale sets when the routine no longer matches. */
+function routineFingerprint(type){
+  return (SESSIONS[type] ? SESSIONS[type].exercises : []).map(e=>e.name).join('|');
+}
+
 function getOrCreateTodayEntry(type){
   const t = today();
+  const fp = routineFingerprint(type);
   if(!state.log[t] || state.log[t].type !== type){
-    state.log[t] = { type, exercises: {} };
+    state.log[t] = { type, fp, exercises: {} };
+  } else if(state.log[t].fp !== fp){
+    /* Same session type, different routine → old positions are meaningless. */
+    state.log[t].fp = fp;
+    state.log[t].exercises = {};
+    save();
   }
   return state.log[t];
 }
@@ -1066,7 +1109,7 @@ function renderToday(){
   const def = SESSIONS[sel];
   const entry = getOrCreateTodayEntry(sel);
 
-  heroKicker.textContent = `TODAY · ${def.tag.toUpperCase()}`;
+  heroKicker.textContent = `TODAY · ${def.tag.toUpperCase()} · ${APP_BUILD}`;
   heroTitle.textContent = def.name.toUpperCase();
   heroSub.textContent = def.blurb;
 
@@ -1083,8 +1126,12 @@ function renderToday(){
           el('span',{}, ex.name),
           el('span',{class:'target'}, `${ex.sets}×${ex.reps}`),
         ]),
+        ex.load ? el('div',{class:'ex-load'},[
+          el('span',{class:'lbl'},'CON QUÉ'),
+          el('span',{}, ex.load)
+        ]) : null,
         el('div',{class:'ex-cue'}, ex.cue),
-      ])
+      ].filter(Boolean))
     ]);
 
     const setsHead = el('div',{class:'sets-head'},[
