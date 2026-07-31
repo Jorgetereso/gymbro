@@ -37,6 +37,7 @@
     --c-pump:#c084fc;
     --c-full:#fbbf24;
     --c-temp:#22d3ee;
+    --c-mob:#a3e635;
     --radius:14px;
     --radius-md:10px;
     --radius-sm:8px;
@@ -196,6 +197,7 @@
   .picker .pk.pump.active{background:rgba(192,132,252,.14);border-color:var(--c-pump);box-shadow:0 0 0 1px var(--c-pump), 0 0 18px rgba(192,132,252,.28)}
   .picker .pk.full.active{background:rgba(251,191,36,.14);border-color:var(--c-full);box-shadow:0 0 0 1px var(--c-full), 0 0 18px rgba(251,191,36,.28)}
   .picker .pk.temp.active{background:rgba(34,211,238,.14);border-color:var(--c-temp);box-shadow:0 0 0 1px var(--c-temp), 0 0 18px rgba(34,211,238,.3)}
+  .picker .pk.mob.active{background:rgba(163,230,53,.14);border-color:var(--c-mob);box-shadow:0 0 0 1px var(--c-mob), 0 0 18px rgba(163,230,53,.28)}
   @media (max-width:520px){
     .picker{grid-template-columns:repeat(3,1fr);gap:5px}
     .picker .pk{padding:11px 3px;font-size:13px;min-height:56px}
@@ -358,6 +360,7 @@
   .tag.pump{background:rgba(192,132,252,.12);color:#cfa2fc;border-color:rgba(192,132,252,.25)}
   .tag.full{background:rgba(251,191,36,.12);color:#fcd277;border-color:rgba(251,191,36,.25)}
   .tag.temp{background:rgba(34,211,238,.12);color:#5fe5f5;border-color:rgba(34,211,238,.25)}
+  .tag.mob{background:rgba(163,230,53,.12);color:#bef264;border-color:rgba(163,230,53,.25)}
 
   /* DETAILS */
   details{
@@ -508,7 +511,7 @@
   <section id="tab-history" class="hide">
     <h2 style="margin-bottom:14px">History</h2>
     <div class="alert info" style="margin-bottom:14px">
-      Every saved session lives here. Tap any day to see what you lifted. Your job each session: <b>beat one number</b> from the same session type — more weight, more reps, or one extra set.
+      Acá vive cada sesión guardada. Tocá cualquier día para ver qué levantaste. Tu trabajo <b>no</b> es superar un número cada vez: es <b>repetir el mismo peso con mejor técnica</b> hasta llegar al tope del rango de reps dos sesiones seguidas. Recién ahí subís un escalón. La constancia es la progresión.
     </div>
     <div id="historyList"></div>
   </section>
@@ -518,54 +521,124 @@
     <h2 style="margin-bottom:14px">The Plan</h2>
 
     <div class="card" style="margin-bottom:14px">
-      <h3>How To Use This</h3>
-      <p style="margin-top:8px;line-height:1.7">
-        4 sessions a week, any 4 days that fit around <b>golf (Fri / Sat)</b>. Rotate <b>Push → Pull → Legs → Pump &amp; Core</b>. Use <b>Full Body</b> when you can only fit one session that week.
+      <h3>La regla que te faltaba</h3>
+      <div class="alert" style="margin-top:10px;border-color:var(--accent-dim);background:var(--accent-soft)">
+        <b>De 10 kg a 14 kg es un salto del 40%.</b> El límite seguro es <b>5-10% por vez</b>. Después de 3 años en 10 kg, tu próximo escalón era <b>11 o 12 kg</b>, no 14. Tus músculos toleraban el salto; tus tendones y tu zona media, no. Eso es exactamente lo que pasó.
+      </div>
+      <p style="margin-top:12px;line-height:1.7">
+        Y ojo: el peso no era el único problema. Hacías <b>7 ejercicios por sesión</b> con 3 movimientos pegándole al mismo músculo (3 de pecho en Push, 3 de tirón horizontal en Pull, 4 de cuádriceps en Legs). Eso es fatiga acumulada sin estímulo extra — el punto exacto donde la técnica se rompe y aparece la lesión.
       </p>
       <p style="margin-top:10px;line-height:1.7">
-        On the TODAY tab pick the session, then log every working set: <b>weight × reps</b>. The next session of the same type will show you what you did last time — your job is to <b class="accent">beat one number</b>.
-      </p>
-      <p style="margin-top:10px;line-height:1.7;color:var(--text-dim);font-size:14px">
-        Progressive overload = add a little weight, do one more rep, or one more set. Pick one per week. That's the whole game.
+        Rediseñé todo a <b class="accent">4 ejercicios por sesión, uno por patrón de movimiento</b>. Menos volumen basura, más calidad por serie, y muchísimo menos riesgo.
       </p>
     </div>
 
     <div class="card" style="margin-bottom:14px">
+      <h3>Cómo subir de peso sin lesionarte</h3>
+      <div class="stack" style="margin-top:10px">
+        <div class="alert good"><b>1 · Doble progresión.</b> Te quedás en el MISMO peso hasta llegar al tope del rango de reps en TODAS las series, dos sesiones seguidas. Ej: 3×8-10 con 12kg → cuando hagas 10, 10 y 10 dos veces, recién ahí subís.</div>
+        <div class="alert good"><b>2 · Salto máximo 5-10%.</b> Con mancuernas: de 10 va a 12, de 12 va a 14. Nunca de a dos escalones. En máquinas y poleas: el disco más chico que tengan.</div>
+        <div class="alert good"><b>3 · Cuando subís, retrocedés.</b> La sesión que estrenás peso nuevo volvés a la parte BAJA del rango (de 10 reps a 8) y hacés una serie menos. Es normal y es a propósito.</div>
+        <div class="alert info"><b>4 · Una variable por semana.</b> O más peso, o más reps, o una serie más. Nunca dos a la vez.</div>
+        <div class="alert info"><b>5 · RIR 2, no al fallo.</b> Terminá cada serie sintiendo que te quedaban 2 reps limpias. El fallo suma muy poco estímulo y multiplica el riesgo. Las primeras 2 semanas de vuelta: RIR 4.</div>
+        <div class="alert"><b>6 · La técnica define el peso.</b> Si tenés que dar un envión, arquear la espalda o encoger los hombros para completar la rep, ese peso todavía no es tuyo. Bajalo sin culpa.</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px">
+      <h3>Cómo entrenar de acá en adelante</h3>
+      <p style="margin-top:8px;line-height:1.7">
+        <b>Semanas 1-2 (arrancá acá):</b> alterná <b class="accent">RE-ENTRADA</b> y <b class="accent">MOVILIDAD</b>, 4 días. Cargas mínimas. El objetivo es comprobar que la espalda tolera cada patrón, no ganar músculo.
+      </p>
+      <p style="margin-top:10px;line-height:1.7">
+        <b>Semana 3 en adelante</b> (si pasaste las 2 semanas sin molestia): <b>Push → Pull → Legs → Movilidad</b>, 4 días, esquivando <b>golf (vie/sáb)</b>. <b>Pump &amp; Core</b> si te da un quinto día. <b>Full Body</b> la semana que solo entrás una vez.
+      </p>
+      <p style="margin-top:10px;line-height:1.7;color:var(--text-dim);font-size:14px">
+        Movilidad no es el día de descanso — es una de las cuatro sesiones. Es lo que te compra los otros tres días.
+      </p>
+      <p style="margin-top:10px;line-height:1.7;color:var(--text-dim);font-size:14px">
+        En la pestaña TODAY elegís la sesión y registrás cada serie de trabajo: <b>kg × reps</b>. La próxima vez que hagas esa misma sesión vas a ver qué hiciste la vez anterior.
+      </p>
+    </div>
+
+    <div class="card" style="margin-bottom:14px">
+      <h3>Movilidad sin perder estética</h3>
+      <p style="margin-top:8px;line-height:1.7">
+        No son objetivos opuestos: lo que te saca movilidad no es el músculo, es entrenar en rango corto. Tres reglas y el problema desaparece.
+      </p>
+      <div class="stack" style="margin-top:10px">
+        <div class="alert info"><b>Rango completo, siempre.</b> Un músculo entrenado en rango completo termina MÁS flexible, no menos. Bajar poco por cargar más es lo que acorta.</div>
+        <div class="alert info"><b>Priorizá los ejercicios que estiran bajo carga.</b> Por eso el press inclinado, el curl inclinado, el tríceps sobre la cabeza y la búlgara están en la rutina: estimulan y dan movilidad en el mismo movimiento.</div>
+        <div class="alert info"><b>Un día dedicado por semana.</b> Movilidad + core anti-rotación. 20 minutos. Es la sesión que vas a querer saltear y la que no podés saltear.</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px">
       <h3>The Sessions</h3>
-      <div class="meta">Tap each one to see exercises and form cues. Numbers and weights are starting points — beat them. <b>TEMP</b> is a custom slot that Claude updates on request.</div>
+      <div class="meta">Tocá cada una para ver los ejercicios, la técnica y por qué está ahí. Los pesos son puntos de partida conservadores a propósito — se suben con la regla de arriba, no por sensación.</div>
       <details open>
-        <summary><span class="tag push">PUSH</span> Chest · Shoulders · Triceps</summary>
+        <summary><span class="tag temp">RE-ENTRADA</span> Empezá acá — semanas 1 y 2</summary>
+        <div id="planTemp"></div>
+      </details>
+      <details>
+        <summary><span class="tag mob">MOVILIDAD</span> Dorsal · Cadera · Core anti-rotación</summary>
+        <div id="planMob"></div>
+      </details>
+      <details>
+        <summary><span class="tag push">PUSH</span> Pecho · Hombro · Tríceps</summary>
         <div id="planPush"></div>
       </details>
       <details>
-        <summary><span class="tag pull">PULL</span> Back · Biceps · Rear Delts</summary>
+        <summary><span class="tag pull">PULL</span> Espalda · Bíceps · Deltoide posterior</summary>
         <div id="planPull"></div>
       </details>
       <details>
-        <summary><span class="tag legs">LEGS</span> Quads · Hams · Glutes · Calves</summary>
+        <summary><span class="tag legs">LEGS</span> Cuádriceps · Isquios · Glúteo · Gemelos</summary>
         <div id="planLegs"></div>
       </details>
       <details>
-        <summary><span class="tag pump">PUMP</span> Arms · Rear Delts · Core</summary>
+        <summary><span class="tag pump">PUMP</span> Brazos · Deltoide posterior · Core (opcional)</summary>
         <div id="planPump"></div>
       </details>
       <details>
-        <summary><span class="tag full">FULL BODY</span> Squat · Press · Pull — the whole thing</summary>
+        <summary><span class="tag full">FULL BODY</span> Todo en uno, para la semana de un solo día</summary>
         <div id="planFull"></div>
-      </details>
-      <details>
-        <summary><span class="tag temp">TEMP</span> Custom — lo que Claude te arme</summary>
-        <div id="planTemp"></div>
       </details>
     </div>
 
-    <div class="card">
-      <h3>Quick Rules</h3>
+    <div class="card" style="margin-bottom:14px">
+      <h3>Qué saqué y por qué</h3>
       <div class="stack" style="margin-top:10px">
-        <div class="alert good"><b>Warm up.</b> 2-3 light ramp-up sets on the first big lift (Squat / Bench / Row). Then bring intensity.</div>
-        <div class="alert good"><b>Last set must be hard.</b> If you finish the last set with 3+ reps in the tank, the weight was too light. Add 2.5-5 kg next time.</div>
-        <div class="alert info"><b>Free weights first, machines last.</b> Bar / dumbbell compounds while fresh, machines &amp; cables to pump volume after.</div>
-        <div class="alert"><b>Pull volume ≥ push volume.</b> Most guys are bench-heavy and round forward. Don't be that guy.</div>
+        <div class="alert"><b>Sentadilla con barra y peso muerto rumano.</b> La barra apoya justo sobre la zona que te está molestando y los dos exigen bracing máximo. Prensa + curl femoral te dan el mismo estímulo con la espalda apoyada. Vuelven cuando estés 100%, y con barra vacía.</div>
+        <div class="alert"><b>Remo con barra inclinado y remo sentado en polea.</b> Tres tirones horizontales por semana pidiéndole a tu zona media que sostenga el torso en el aire. Queda uno solo, con el pecho apoyado.</div>
+        <div class="alert"><b>Press de banca con barra y press militar.</b> Los dos te obligan a estabilizar con la dorsal. El press inclinado con mancuernas apoya toda tu espalda en el respaldo y te da más pecho superior.</div>
+        <div class="alert"><b>Dominadas.</b> Volumen alto de tirón vertical con el cuerpo colgando y libre. El jalón sentado hace lo mismo con las piernas trabadas. Vuelven en un mes o dos.</div>
+        <div class="alert"><b>Woodchopper.</b> Rotación de tronco bajo carga con la zona media irritada — justo lo que no querés. Lo reemplaza el Pallof Press, que entrena a resistir la rotación.</div>
+        <div class="alert"><b>El 2º y 3er ejercicio de cada músculo.</b> Pushdown + overhead de tríceps, curl parado + hammer, sentadilla + prensa + extensión + estocadas. Uno alcanza. Lo que sobraba solo sumaba fatiga.</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px">
+      <h3>Reglas rápidas</h3>
+      <div class="stack" style="margin-top:10px">
+        <div class="alert good"><b>Calentá siempre.</b> Movilidad dorsal + 2 series de aproximación en el primer ejercicio pesado. No es tiempo perdido, es la sesión.</div>
+        <div class="alert good"><b>La última serie es exigente, no destructiva.</b> RIR 2. Si terminás con 4+ reps en el tanque durante 2 sesiones seguidas, ahí sí subís UN escalón.</div>
+        <div class="alert info"><b>Bajada lenta.</b> 3 segundos bajando en todo. Da más estímulo con menos peso — que es exactamente el trato que necesitás.</div>
+        <div class="alert info"><b>Máquinas y mancuernas antes que barras.</b> Al revés de lo que dice todo el mundo, y a propósito: la máquina sostiene tu columna, la barra se la deja a vos.</div>
+        <div class="alert"><b>Dolor ≠ esfuerzo.</b> Ardor muscular es normal. Pinchazo, dolor puntual o algo que "no se siente muscular": parás la serie. Ahí, no dos series después.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Señales para parar y consultar</h3>
+      <p style="margin-top:8px;line-height:1.7;color:var(--text-dim);font-size:14px">
+        Esto no es diagnóstico — no soy médico y lo que tuviste (dolor que te despertaba de noche 2 días, y que volvió como contractura al retomar) merece que lo mire un kinesiólogo o traumatólogo aunque hoy te sientas bien. Idealmente antes de la semana 3.
+      </p>
+      <div class="stack" style="margin-top:10px">
+        <div class="alert"><b>Dolor que te despierta de noche o que empeora en reposo.</b> El dolor muscular normal mejora cuando te movés. El que aparece quieto no es muscular.</div>
+        <div class="alert"><b>Hormigueo, adormecimiento o dolor que baja por el brazo o la pierna.</b> Pará y consultá, no lo entrenes.</div>
+        <div class="alert"><b>La misma molestia en el mismo lugar 3 sesiones seguidas.</b> No es casualidad ni falta de calentamiento.</div>
+        <div class="alert good"><b>Regla del día a día:</b> si la molestia aparece durante el calentamiento, ese día hacés MOVILIDAD y nada más. Perdés una sesión; discutir con eso te cuesta dos semanas.</div>
       </div>
     </div>
   </section>
@@ -623,97 +696,129 @@
 'use strict';
 
 /* ============================================================
-   SESSIONS — gym-based, real equipment.
-   Each exercise has:
-     name, sets (target), reps (target), startWeight (kg, first-time seed),
-     load (what to use), cue (form), why (rationale).
+   SESSIONS — gym, equipamiento real.
+   Cada ejercicio tiene:
+     name, sets (objetivo), reps (objetivo), startWeight (kg, semilla la 1ra vez),
+     load (con qué), cue (técnica), why (por qué está acá).
+   Cada sesión tiene además `warmup`: array de líneas de entrada en calor.
+
+   FILOSOFÍA (reescrito 28/07 tras la sobrecarga dorsal derecha):
+   - 4 ejercicios por sesión, no 7. Un movimiento por patrón, cero solapamiento.
+   - Nada que obligue a la columna a sostener la carga: pecho apoyado, respaldo,
+     máquina o cable antes que barra libre inclinado.
+   - Progresión por doble progresión + saltos de 5-10%, nunca +40%.
+   - Movilidad como sesión propia, no como algo que "si sobra tiempo".
    ============================================================ */
 
 const SESSIONS = {
   push: {
-    name: 'Push', tag: 'push', focus: 'Chest · Shoulders · Triceps',
-    blurb: 'Heaviest pressing day. Warm up, leave 1-2 reps in the tank on the first sets, empty it on the last.',
+    name: 'Push', tag: 'push', focus: 'Pecho · Hombro · Tríceps',
+    blurb: '4 ejercicios, no 7. Un press, una apertura, un lateral, un tríceps. Sacamos el press de banca con barra y el press militar: los dos te obligan a estabilizar con la dorsal, que es justo lo que tenés sensible. Cortá siempre con 2 reps en el tanque.',
+    warmup: [
+      'Cat-cow ×10 + apertura de libro ×8 por lado. 2 minutos. No lo saltees: la dorsal tiene que estar despierta antes de presionar.',
+      '2 series de aproximación en el primer press: 50% ×10 y 75% ×6. Recién ahí empieza la serie 1 real.',
+      'Si sentís la molestia derecha en el calentamiento, hoy hacés MOVILIDAD y listo. No negocies con eso.',
+    ],
     exercises: [
-      { name: 'Barbell Bench Press',          sets: 4, reps: '6-8',   startWeight: 35, load: 'Barbell', cue: 'Shoulder blades pinned + down, slight arch, bar to mid-chest with elbows ~75°. Drive up explosively.', why: 'Your #1 chest + front-delt + triceps mass builder.' },
-      { name: 'Incline Dumbbell Press',       sets: 3, reps: '8-10',  startWeight: 14, load: 'Dumbbells', cue: 'Bench at ~30°. Press up and slightly together, full stretch at the bottom.', why: 'Upper chest is what fills out a shirt — incline hits what flat bench misses.' },
-      { name: 'Machine / DB Shoulder Press',  sets: 3, reps: '8-12',  startWeight: 14, load: 'Machine or DBs', cue: 'Press overhead without shrugging. Stop just short of lockout to keep tension on the delts.', why: 'Overhead pressing builds the delt cap that makes shoulders 3D.' },
-      { name: 'Pec Deck / Cable Fly',         sets: 3, reps: '12-15', startWeight: 30, load: 'Machine / Cable', cue: 'Soft elbows fixed. Squeeze hands together, slow stretch back. Feel the chest, not the arms.', why: 'Isolation under stretch = chest growth pressing alone can\'t give.' },
-      { name: 'Dumbbell Lateral Raise',       sets: 4, reps: '15',    startWeight: 6,  load: 'Light DBs', cue: 'Soft elbow, lead with the elbow, lift to shoulder height only, lower slow. Form > ego here.', why: 'Side delts = shoulder width = the V-taper illusion.' },
-      { name: 'Cable Triceps Pushdown',       sets: 3, reps: '10-12', startWeight: 20, load: 'Cable', cue: 'Elbows pinned to your sides. Push to full lockout, control back up.', why: 'Triceps are 2/3 of your arm.' },
-      { name: 'Overhead Cable Triceps Ext.',  sets: 3, reps: '12-15', startWeight: 15, load: 'Cable / rope', cue: 'Rope overhead, lean slightly forward, full extension, feel the stretch behind your head.', why: 'Long head only grows under overhead stretch.' },
+      { name: 'Press Inclinado con Mancuernas', sets: 3, reps: '8-10',  startWeight: 12, load: 'Mancuernas, banco a 30°. Espalda 100% apoyada en el respaldo.', cue: 'Banco a 30°, no más. Escápulas apoyadas y quietas contra el banco — el respaldo estabiliza por vos, no tenés que arquear. Bajá en 3 segundos hasta sentir el pecho estirado, subí en 1. No trabes el codo arriba.', why: 'Pecho superior = lo que llena la remera. Un solo press: alcanza. Con el banco inclinado la columna no sostiene nada.' },
+      { name: 'Pec Deck / Apertura en Polea',   sets: 3, reps: '12-15', startWeight: 20, load: 'Máquina de pec deck (preferida) o poleas.', cue: 'Codos apenas flexionados y FIJOS. Juntá las manos, apretá 1 seg, abrí lento buscando el estiramiento. Sentí el pecho, no el hombro. Si el hombro tira adelante, reducí el rango de apertura.', why: 'El pecho crece bajo estiramiento con carga baja. Es el ejercicio de más retorno por menos riesgo que existe para pecho.' },
+      { name: 'Elevación Lateral',              sets: 3, reps: '12-15', startWeight: 5,  load: 'Mancuernas livianas o polea. En serio: livianas.', cue: 'Codo apenas doblado, guiá con el CODO no con la mano, subí solo hasta la altura del hombro, bajá en 3 segundos. Cero envión de cadera. Si tenés que tirar con el cuerpo, es demasiado peso — y acá el peso no importa.', why: 'Deltoide lateral = ancho de hombro = el efecto V. Es el músculo más estético por kilo de esfuerzo, y el que menos se lesiona si vas liviano.' },
+      { name: 'Extensión de Tríceps en Polea Alta (sobre la cabeza)', sets: 3, reps: '10-12', startWeight: 12, load: 'Polea con soga.', cue: 'Soga por detrás de la cabeza, un pie adelante, tronco apenas inclinado. Codos ALTOS y cerrados, apuntando adelante. Estirá sin trabar, volvé lento sintiendo el estiramiento atrás del brazo.', why: 'Un solo ejercicio de tríceps, y que sea el que estira la porción larga: es la más grande de las tres y la única que necesita el brazo arriba para crecer. Pushdown + overhead era duplicar trabajo.' },
     ]
   },
   pull: {
-    name: 'Pull', tag: 'pull', focus: 'Back · Biceps · Rear Delts',
-    blurb: 'Pull volume must match push. Pull with the elbows, not the hands.',
+    name: 'Pull', tag: 'pull', focus: 'Espalda · Bíceps · Deltoide posterior',
+    blurb: 'El día que hay que rediseñar sí o sí. Afuera: dominadas, remo con barra inclinado y remo sentado en polea (tres tirones horizontales pidiéndole a la zona media que aguante). Adentro: todo con el pecho apoyado o sentado con respaldo. Tu espalda va a trabajar, pero no va a SOSTENER.',
+    warmup: [
+      'Cat-cow ×10 + apertura de libro ×8 por lado.',
+      'Band pull-apart ×20 con goma liviana — despierta escápulas y manguito.',
+      '1 serie de aproximación al 50% en el jalón antes de la serie real.',
+    ],
     exercises: [
-      { name: 'Pull-Up',                      sets: 4, reps: '6-10',  startWeight: 0,  load: 'Bodyweight (asistida si hace falta)', cue: 'Pecho al palo. No swing. Si bajás de 5 reps limpias, usá máquina de asistencia.', why: 'Best single lift for lat width.' },
-      { name: 'Lat Pulldown (wide grip)',     sets: 4, reps: '8-12',  startWeight: 50, load: 'Machine', cue: 'Pecho arriba, tirá a la clavícula (no al estómago), codos abajo y atrás, control en la subida.', why: 'Builds lat width. Easy to load and progress.' },
-      { name: 'Seated Cable Row',             sets: 3, reps: '10-12', startWeight: 50, load: 'Cable', cue: 'Espalda neutra, tirá al ombligo, apretá omóplatos, sin balanceo.', why: 'Mid-back thickness; fixes the desk-rounded posture.' },
-      { name: 'Chest-Supported / Barbell Row',sets: 3, reps: '8-10',  startWeight: 40, load: 'Barbell or machine', cue: 'Bisagra a ~45°, tirá a las costillas bajas, codos al cuerpo.', why: 'Heavy horizontal pull = overall back density.' },
-      { name: 'Face Pull',                    sets: 3, reps: '15-20', startWeight: 25, load: 'Cable / rope', cue: 'Cuerda a la altura de la cara, tirá hacia la frente, separá las manos, rotá hacia afuera.', why: 'Rear delts + rotator cuff = shoulder insurance.' },
-      { name: 'Dumbbell / Cable Curl',        sets: 3, reps: '10-12', startWeight: 12, load: 'DBs or cable', cue: 'Sin balanceo. Apretá arriba, 2-3 seg bajando.', why: 'Direct bicep load.' },
-      { name: 'Hammer Curl',                  sets: 3, reps: '12',    startWeight: 14, load: 'Dumbbells', cue: 'Agarre neutro (palmas mirándose), control en la bajada.', why: 'Brachialis + forearm — thickens the whole arm.' },
+      { name: 'Jalón al Pecho (agarre neutro)', sets: 3, reps: '8-10',  startWeight: 40, load: 'Máquina de jalón, triángulo o barra de agarre neutro (palmas enfrentadas).', cue: 'Muslos trabados bajo el rodillo, pecho arriba, espalda neutra SIN inclinarte hacia atrás. Tirá con los codos hacia el bolsillo, llevá el mango a la clavícula. Subí en 3 segundos controlado. Si te vas para atrás con el torso, bajá el peso.', why: 'Ancho de dorsal, sentado y con las piernas trabadas: la columna está sostenida por la máquina. Reemplaza a la dominada, que ahora mismo es demasiado tirón para tu zona media.' },
+      { name: 'Remo con Pecho Apoyado',         sets: 3, reps: '10-12', startWeight: 25, load: 'Máquina de remo con pechera, o mancuernas en banco inclinado a 30° boca abajo.', cue: 'PECHO APOYADO todo el tiempo — ese es el punto del ejercicio. Tirá con los codos pegados al cuerpo hacia las costillas bajas, apretá las escápulas 1 seg, bajá lento. La frente y el pecho no se despegan del respaldo.', why: 'Grosor de espalda sin que tu zona media tenga que sostener el torso en el aire. Esto SOLO reemplaza al remo con barra Y al remo sentado: un tirón horizontal es suficiente.' },
+      { name: 'Face Pull',                      sets: 3, reps: '15-20', startWeight: 15, load: 'Polea a la altura de la cara, con soga.', cue: 'Soga a la altura de la cara, tirá hacia la frente separando las manos y rotando los antebrazos hacia afuera. Codos altos, a la altura del hombro. Apretá 1 seg. Liviano y perfecto, siempre.', why: 'Deltoide posterior + manguito rotador + trapecio medio. Es prevención pura y encima te arma el hombro redondo. Este NO se saca nunca.' },
+      { name: 'Curl Inclinado con Mancuernas',  sets: 3, reps: '10-12', startWeight: 8,  load: 'Mancuernas, banco a 60°. Empezá con 8kg aunque te parezca poco.', cue: 'Sentado, banco a 60°, brazos colgando libres detrás del cuerpo. Subí girando la palma hacia arriba, apretá 1 seg, bajá en 3 segundos. Los codos NO se van adelante. Cero balanceo.', why: 'Un solo curl. Este, porque el brazo colgando atrás estira la porción larga del bíceps — el ángulo que más crece. El curl parado + hammer era trabajo repetido.' },
     ]
   },
   legs: {
-    name: 'Legs', tag: 'legs', focus: 'Quads · Hams · Glutes · Calves',
-    blurb: 'The day everyone skips. Brace your core, full depth, drive through mid-foot.',
+    name: 'Legs', tag: 'legs', focus: 'Cuádriceps · Isquios · Glúteo · Gemelos',
+    blurb: 'Afuera la sentadilla con barra: la barra se apoya justo en la zona que te está molestando y te pide bracing máximo. Todo el estímulo de pierna se puede conseguir con la espalda apoyada. Cuatro ejercicios, cero compresión de columna.',
+    warmup: [
+      '5 min de bici o caminata en cinta con inclinación.',
+      'World\'s greatest stretch ×5 por lado + círculos de cadera ×10 por lado.',
+      'Prensa: 2 series de aproximación (mitad del peso ×12, después 75% ×8).',
+    ],
     exercises: [
-      { name: 'Barbell Back Squat',           sets: 4, reps: '6-8',   startWeight: 40, load: 'Barbell', cue: 'Bar on upper traps, brace, sit between your hips to at least parallel, knees track over toes, drive up.', why: 'Single most effective lower-body mass builder.' },
-      { name: 'Leg Press',                    sets: 3, reps: '10-12', startWeight: 80, load: 'Machine', cue: 'Pies a la anchura de los hombros, mid-platform. Bajá hasta ~90° de rodilla.', why: 'Pile on quad volume without taxing the spine.' },
-      { name: 'Romanian Deadlift',            sets: 3, reps: '10-12', startWeight: 40, load: 'Barbell or DBs', cue: 'Rodillas blandas, empujá la cadera atrás, barra rozando los muslos, hamstring stretch.', why: 'Hams + glutes + posterior chain. Protects your low back on the golf course.' },
-      { name: 'Seated / Lying Leg Curl',      sets: 3, reps: '12-15', startWeight: 30, load: 'Machine', cue: 'Llevá los talones al glúteo, pausá, control en la vuelta.', why: 'Lower hamstring that squats and RDLs miss.' },
-      { name: 'Leg Extension',                sets: 3, reps: '12-15', startWeight: 30, load: 'Machine', cue: 'Apretá 1 seg arriba, bajada lenta.', why: 'Isolates the quads — especially the teardrop above the knee.' },
-      { name: 'Walking Lunge',                sets: 3, reps: '12/leg', startWeight: 10, load: 'Dumbbells', cue: 'Paso largo, rodilla de atrás al piso, empujá con el talón.', why: 'Single-leg fixes imbalances and hammers glutes under stretch.' },
-      { name: 'Standing Calf Raise',          sets: 4, reps: '15-20', startWeight: 50, load: 'Machine', cue: 'Stretch abajo, pausá 1 seg, subí al dedo gordo.', why: 'Calves grow with deep stretch + frequency.' },
+      { name: 'Prensa de Piernas',              sets: 3, reps: '10-12', startWeight: 60, load: 'Máquina de prensa. Empezá liviano y subí de a un disco chico.', cue: 'Pies al ancho de hombros, en el medio de la plataforma. Bajá hasta ~90° de rodilla y PARÁ ANTES de que la pelvis se despegue del respaldo — ese despegue es exactamente lo que carga la zona lumbar/dorsal. Empujá con el mediopié, no trabes la rodilla arriba.', why: 'Todo el estímulo de cuádriceps de la sentadilla, con la espalda apoyada en un respaldo. Con tu zona media sensible, esto es no negociable.' },
+      { name: 'Curl Femoral Sentado',           sets: 3, reps: '12-15', startWeight: 25, load: 'Máquina de curl femoral sentado.', cue: 'Espalda apoyada, rodillo bien ajustado sobre los muslos. Llevá los talones abajo y atrás, pausá 1 seg abajo, volvé en 3 segundos. Todo el rango, sin rebotar.', why: 'Isquios sin peso muerto rumano. El RDL es un gran ejercicio pero es una bisagra cargada — no lo tocamos hasta que la espalda esté 100%. La máquina te da el isquio con cero riesgo.' },
+      { name: 'Sentadilla Búlgara (mancuernas livianas)', sets: 3, reps: '10/pierna', startWeight: 8, load: 'Dos mancuernas livianas al costado. Pie de atrás sobre un banco.', cue: 'Pie de atrás sobre el banco, pie de adelante bien adelantado. Bajá vertical, rodilla de atrás al piso, empujá con el talón de adelante. Peso liviano: acá el objetivo es RANGO y equilibrio, no carga. Empezá sin peso si hace falta.', why: 'Unilateral: corrige la asimetría entre lado derecho e izquierdo (y tu molestia es del lado derecho, no es casualidad). Además es el mejor ejercicio de movilidad de cadera que existe con carga. Glúteo estirado = estética + cadera sana.' },
+      { name: 'Elevación de Gemelos de Pie',    sets: 3, reps: '15-20', startWeight: 40, load: 'Máquina de gemelos o en la prensa.', cue: 'Estirá abajo 2 segundos, pausá, subí hasta la punta del dedo gordo y apretá 1 seg. Rango completo, sin rebote.', why: 'Gemelos crecen con estiramiento y frecuencia, no con peso. Cero riesgo, buen retorno estético.' },
+    ]
+  },
+  mob: {
+    name: 'Movilidad', tag: 'mob', focus: 'Dorsal · Cadera · Core anti-rotación',
+    blurb: 'Tu cuarta sesión de la semana — y para los próximos 2 meses, la más importante de las cuatro. 20 minutos, sin carga. Esto es lo que hace que puedas seguir entrenando el resto del año. En la app va con 0 kg: registrá solo las reps o los segundos.',
+    warmup: [
+      'Ninguno. Esto ES el calentamiento del cuerpo entero.',
+      'Hacelo despacio y respirando. Si algo pincha, salteálo — la movilidad nunca duele.',
+    ],
+    exercises: [
+      { name: 'Cat-Cow (gato-camello)',         sets: 2, reps: '10',        startWeight: 0, load: 'Peso corporal, en cuatro apoyos.', cue: 'En cuatro patas. Inhalá hundiendo la panza y mirando arriba, exhalá redondeando toda la espalda y llevando el mentón al pecho. LENTO — 4 segundos por dirección. Buscá mover vértebra por vértebra, sobre todo la zona media.', why: 'Devuelve movimiento segmentario a la dorsal. Una zona media que no se mueve es una zona media que se sobrecarga: ahí empezó tu problema.' },
+      { name: 'Apertura de Libro (dorsal)',     sets: 2, reps: '8/lado',    startWeight: 0, load: 'Peso corporal, acostado de costado.', cue: 'Acostado de costado, rodillas a 90° apoyadas una sobre otra, brazos estirados juntos adelante. Abrí el brazo de arriba en arco hasta el piso del otro lado, girando SOLO desde el pecho — las rodillas quedan pegadas al piso. Respirá y quedate 3 segundos al final.', why: 'Rotación torácica pura. Es EL ejercicio para tu lesión: la zona media derecha se sobrecarga cuando no puede rotar y la lumbar u hombro compensan.' },
+      { name: 'World\'s Greatest Stretch',      sets: 2, reps: '5/lado',    startWeight: 0, load: 'Peso corporal, en el piso.', cue: 'Estocada larga, mano de adentro al piso al lado del pie. Apoyá el codo de adentro cerca del pie, después abrí el mismo brazo al techo rotando el pecho y seguilo con la mirada. Volvé. Movete lento, no rebotes.', why: 'Cadera + dorsal + isquios en un solo movimiento. El mejor retorno por minuto de todo el calentamiento.' },
+      { name: 'Dead Bug',                       sets: 3, reps: '8/lado',    startWeight: 0, load: 'Peso corporal, boca arriba.', cue: 'Boca arriba, brazos al techo, rodillas a 90°. Bajá el brazo derecho y la pierna izquierda a la vez, sin que la lumbar se despegue del piso (la espalda baja pegada TODO el tiempo). Volvé y cambiá. Exhalá al bajar. Si la lumbar se despega, achicá el rango.', why: 'Le enseña al core a estabilizar la columna mientras los brazos y piernas se mueven — que es exactamente lo que falló cuando te sobrecargaste. Cero compresión.' },
+      { name: 'Plancha Lateral',                sets: 3, reps: '25 seg/lado', startWeight: 0, load: 'Peso corporal. Si es mucho, apoyá las rodillas.', cue: 'De costado sobre el antebrazo, codo debajo del hombro, cuerpo en línea recta. Subí la cadera y sostené. No dejes caer la cadera ni rotar el pecho. Empezá con rodillas apoyadas si 25 segundos es mucho.', why: 'Core anti-lateral: el cuadrado lumbar y los oblicuos trabajan frenando la caída. Es el músculo que te "contractura" cuando está débil y le pedís que sostenga de golpe.' },
+      { name: 'Band Pull-Apart',                sets: 3, reps: '15',        startWeight: 0, load: 'Goma elástica liviana.', cue: 'Goma al ancho de hombros, brazos estirados a la altura del pecho. Separá las manos llevando las escápulas atrás y abajo, apretá 1 seg, volvé lento. Hombros abajo, sin encoger.', why: 'Trapecio medio y deltoide posterior — la musculatura que sostiene la postura todo el día. Barato, seguro y suma directamente a que los hombros se vean más anchos.' },
     ]
   },
   pump: {
-    name: 'Pump & Core', tag: 'pump', focus: 'Arms · Rear Delts · Core',
-    blurb: 'Tu día fácil. Corto, alto reps. Ejercicios distintos a Push y Pull — sin solapamientos, así los músculos descansan.',
+    name: 'Pump & Core', tag: 'pump', focus: 'Brazos · Deltoide posterior · Core',
+    blurb: 'Día opcional, para la semana que te da un quinto día. Corto, reps altas, cero carga sobre la columna. Sacamos el woodchopper (rotación bajo carga — no ahora) y los dips.',
+    warmup: [
+      'Cat-cow ×10 + band pull-apart ×20. Alcanza: acá no hay nada pesado.',
+    ],
     exercises: [
-      { name: 'EZ-Bar / Cable Curl',          sets: 3, reps: '12-15', startWeight: 15, load: 'EZ-bar o cable', cue: 'Tempo parejo, sin balanceo, apretá fuerte arriba.', why: 'Pump de bíceps con ángulo de muñeca distinto al curl de Pull.' },
-      { name: 'Incline Dumbbell Curl',        sets: 3, reps: '10-12', startWeight: 8,  load: 'Dumbbells', cue: 'Banco a 60°, brazos colgando libres, bajada lenta — buscás el stretch máximo abajo.', why: 'Long-head del bíceps — el ángulo que el curl parado de Pull no toca.' },
-      { name: 'Rope Triceps Pushdown',        sets: 3, reps: '12-15', startWeight: 20, load: 'Cable / rope', cue: 'Separá la cuerda al final, full lockout.', why: 'Pump de tríceps con rope — distinto al pushdown con barra de Push.' },
-      { name: 'Bench Dip / Tricep Dip',       sets: 3, reps: '10-12', startWeight: 0,  load: 'Peso corporal (banco o máquina de dips)', cue: 'Codos hacia atrás (no abiertos), bajá hasta 90°, empujá arriba con tríceps. Si sos fuerte, sumá disco en las piernas.', why: 'Compuesto de tríceps — estímulo distinto a los cables de Push.' },
-      { name: 'Reverse Pec Deck',             sets: 3, reps: '15',    startWeight: 25, load: 'Machine', cue: 'Brazos casi rectos, abrí hacia atrás llevando los codos a la espalda, apretá los rear delts 1 seg.', why: 'Rear delts aislados — Push y Pull casi no los tocan en serio.' },
-      { name: 'Cable Woodchopper',            sets: 3, reps: '12/side', startWeight: 15, load: 'Cable', cue: 'Diagonal de arriba hacia abajo cruzando el cuerpo, rotá el tronco.', why: 'Potencia rotacional — pádel y golf más explosivos.' },
-      { name: 'Hanging Leg Raise',            sets: 3, reps: '12-15', startWeight: 0,  load: 'Peso corporal', cue: 'Sin swing, levantá con la pelvis (no las piernas), bajada lenta.', why: 'Lower abs.' },
+      { name: 'Curl en Polea',                  sets: 3, reps: '12-15', startWeight: 12, load: 'Polea baja con barra recta o soga.', cue: 'Codos pegados al costado y fijos. Tempo parejo, apretá arriba 1 seg, bajá en 3. Cero balanceo de espalda — la polea mantiene tensión todo el rango, no hace falta tirar.', why: 'Tensión constante en el bíceps con el codo al costado. Ángulo distinto al curl inclinado del día Pull, así que no es trabajo repetido.' },
+      { name: 'Extensión de Tríceps con Soga (pushdown)', sets: 3, reps: '12-15', startWeight: 15, load: 'Polea alta con soga.', cue: 'Codos pegados al cuerpo y FIJOS. Empujá abajo separando las puntas de la soga al final, volvé lento. Si los codos se te van adelante o atrás, bajá el peso.', why: 'Tríceps con el brazo al costado — la porción lateral y medial. Complementa (no duplica) el overhead del día Push.' },
+      { name: 'Reverse Pec Deck',               sets: 3, reps: '15',    startWeight: 15, load: 'Máquina de pec deck invertida.', cue: 'Pecho apoyado en la almohadilla, brazos casi rectos. Abrí llevando los CODOS hacia atrás, apretá los deltoides posteriores 1 seg, volvé lento. No encojas los hombros.', why: 'Deltoide posterior aislado con el pecho apoyado. Hombro redondo desde atrás = la vista de perfil que hace la diferencia estética.' },
+      { name: 'Pallof Press',                   sets: 3, reps: '10/lado', startWeight: 10, load: 'Polea a la altura del pecho, de costado.', cue: 'Parado de costado a la polea, manos en el pecho, pies firmes. Estirá los brazos adelante y NO dejes que el torso rote hacia la polea. Sostené 2 segundos afuera, volvé. El trabajo es no moverse.', why: 'Core anti-rotación. Le enseña a la zona media a resistir el giro en vez de generarlo — es el core que necesitás para que el swing de golf no te vuelva a contracturar. Reemplaza al woodchopper, que hace lo opuesto.' },
     ]
   },
   full: {
-    name: 'Full Body', tag: 'full', focus: 'Squat · Press · Pull — todo en uno',
-    blurb: 'For the week you only have one gym day. Heavy compounds, in and out in ~50 min.',
+    name: 'Full Body', tag: 'full', focus: 'Empuje · Tirón · Pierna — todo en uno',
+    blurb: 'Para la semana en la que solo entrás un día al gym. Cinco movimientos, todos con la espalda apoyada, ~45 minutos.',
+    warmup: [
+      'Cat-cow ×10 + apertura de libro ×8 por lado + world\'s greatest stretch ×5 por lado.',
+      '2 series de aproximación en la prensa y 1 en el press. Sin apuro.',
+    ],
     exercises: [
-      { name: 'Barbell Back Squat',           sets: 3, reps: '6-8',   startWeight: 40, load: 'Barbell', cue: 'Calentamiento + 3 series de trabajo. Bracé fuerte.', why: 'The king. Hits everything below the waist + systemic stimulus.' },
-      { name: 'Barbell Bench Press',          sets: 3, reps: '6-8',   startWeight: 35, load: 'Barbell', cue: 'Escápulas atrás, barra al mid-chest, empuje explosivo.', why: 'The upper-body anchor lift.' },
-      { name: 'Chest-Supported / Barbell Row',sets: 3, reps: '8-10',  startWeight: 40, load: 'Barbell or machine', cue: 'Bisagra ~45°, tirá a las costillas bajas, codos al cuerpo.', why: 'Heavy horizontal pull balances the bench.' },
-      { name: 'Romanian Deadlift',            sets: 2, reps: '10',    startWeight: 40, load: 'Barbell or DBs', cue: 'Empujá cadera atrás, hamstring stretch.', why: 'Posterior chain in 2 sets.' },
-      { name: 'Lat Pulldown (wide grip)',     sets: 2, reps: '10-12', startWeight: 50, load: 'Machine', cue: 'Tirá a la clavícula, codos abajo.', why: 'Vertical pull to round out the back.' },
-      { name: 'Dumbbell Lateral Raise',       sets: 3, reps: '15',    startWeight: 6,  load: 'Light DBs', cue: 'Form > weight.', why: 'Shoulders & finisher pump.' },
-      { name: 'Hanging Leg Raise',            sets: 2, reps: '12-15', startWeight: 0,  load: 'Bodyweight', cue: 'Curvá la pelvis.', why: 'Core finisher.' },
+      { name: 'Prensa de Piernas',              sets: 3, reps: '10-12', startWeight: 60, load: 'Máquina de prensa.', cue: 'Bajá hasta ~90° sin despegar la pelvis del respaldo. Empujá con el mediopié.', why: 'Toda la pierna, columna apoyada.' },
+      { name: 'Press Inclinado con Mancuernas', sets: 3, reps: '8-10',  startWeight: 12, load: 'Mancuernas, banco a 30°.', cue: 'Escápulas apoyadas en el banco, bajada de 3 segundos, sin trabar arriba.', why: 'El empuje del día.' },
+      { name: 'Remo con Pecho Apoyado',         sets: 3, reps: '10-12', startWeight: 25, load: 'Máquina con pechera o mancuernas en banco inclinado boca abajo.', cue: 'Pecho pegado al respaldo, tirá con los codos, apretá escápulas.', why: 'El tirón del día, sin que la columna sostenga.' },
+      { name: 'Elevación Lateral',              sets: 3, reps: '12-15', startWeight: 5,  load: 'Mancuernas livianas.', cue: 'Guiá con el codo, hasta la altura del hombro, bajada lenta.', why: 'Ancho de hombro — lo más estético por minuto.' },
+      { name: 'Dead Bug',                       sets: 3, reps: '8/lado', startWeight: 0, load: 'Peso corporal.', cue: 'Lumbar pegada al piso todo el tiempo, exhalá al bajar.', why: 'Core que estabiliza, no que comprime.' },
     ]
   },
   temp: {
-    name: 'Temp', tag: 'temp', focus: 'Custom · Lo que Claude te arme',
-    blurb: 'Slot custom — la rutina cambia cuando le pidas a Claude algo a medida. Sesión activa: HOME PUMP & CORE (18/07). SOLO con lo que tenés en casa: DBs de 10kg, kettlebell de 15, kettlebell de 20, TRX, barra de dominadas y el piso. Nada de banco, nada de máquinas, nada de cables. Brazos + rear delts + core, reps altas, 45-60s de descanso. Sin cables, el TRX es tu selector de peso: cuanto más horizontal ponés el cuerpo, más pesa.',
+    name: 'Re-entrada', tag: 'temp', focus: 'Semanas 1-2 · Carga mínima',
+    blurb: 'Sesión activa: RE-ENTRADA (28/07). Esto es lo que hacés las PRIMERAS 2 SEMANAS, alternándolo con Movilidad, antes de tocar Push/Pull/Legs. 2 series por ejercicio, peso ridículamente liviano a propósito, RIR 4 (terminás cada serie sintiendo que podías hacer 4 más). El objetivo no es estimular: es comprobar que la espalda tolera el patrón. Si pasás las 2 semanas sin molestia, recién ahí arrancás la rotación normal.',
+    warmup: [
+      'Cat-cow ×10 + apertura de libro ×8 por lado + world\'s greatest stretch ×5 por lado.',
+      'Todo con la mitad del peso que creés que podés. En serio.',
+    ],
     exercises: [
-      { name: 'DB Curl (supinado)',               sets: 3, reps: '12-15',   startWeight: 10, load: 'Tus DBs de 10kg, uno en cada mano. De pie.', cue: 'Parado, codos pegados al costado y FIJOS. Subí girando la palma hacia arriba, apretá el bíceps 1 seg arriba, bajá en 3 segundos. Cero balanceo de espalda — si necesitás impulso, hacé la bajada más lenta en vez de tirar con el cuerpo.', why: 'Con 10kg vas a llegar a 15 reps, así que el estímulo tiene que venir del tempo lento, no de la carga.' },
-      { name: 'TRX Bicep Curl',                   sets: 3, reps: '12-15',   startWeight: 0,  load: 'TRX + tu peso corporal. Regulás la dificultad caminando los pies adelante o atrás.', cue: 'Agarre supinado (palmas arriba), brazos estirados, cuerpo inclinado hacia atrás. Los codos quedan ALTOS y quietos — solo se mueve el antebrazo. Llevá las manos a la frente. Cuanto más adelantás los pies, más pesado.', why: 'Bíceps con el brazo adelantado y en stretch — ángulo que el curl parado no toca. Cero equipamiento extra.' },
-      { name: 'KB Floor Skullcrusher',            sets: 3, reps: '12',      startWeight: 15, load: 'Kettlebell de 15kg, acostado en el PISO (no hace falta banco).', cue: 'Acostado boca arriba en el piso, rodillas flexionadas. KB tomada de los cuernos con las dos manos, brazos estirados sobre el pecho. Bajá SOLO desde el codo hasta que la KB pase por encima de la frente — los codos apuntan al techo y no se abren. Estirá sin trabar el codo.', why: 'Long head del tríceps bajo stretch — la porción más grande y la que más crece. El piso además te frena si perdés el control.' },
-      { name: 'TRX Triceps Extension',            sets: 3, reps: '12-15',   startWeight: 0,  load: 'TRX + peso corporal.', cue: 'De pie mirando el anclaje, cuerpo inclinado hacia adelante, manos arriba de la cabeza. Bajá doblando SOLO los codos (van hacia adelante, al lado de las orejas), estirá empujando. Codos siempre altos y cerrados. Si va muy pesado, parate más vertical.', why: 'Reemplaza el pushdown de polea: tensión constante y graduás la carga con la inclinación del cuerpo.' },
-      { name: 'Diamond Push-Up (piso)',           sets: 3, reps: '10-12',   startWeight: 0,  load: 'Peso corporal, en el piso. Nada más.', cue: 'Manos juntas formando un diamante (índices y pulgares tocándose) debajo del pecho. Codos rozando el cuerpo, NO abiertos. Bajá hasta que el pecho toque las manos, empujá. Si es muy duro, apoyá las rodillas — no rompas la técnica.', why: 'El compuesto de tríceps del día, sin banco ni sillas. Suma pecho interno de yapa.' },
-      { name: 'DB Rear Delt Fly (bent-over)',     sets: 3, reps: '15',      startWeight: 10, load: 'DBs de 10kg. De pie, sin banco. Si no sentís el rear delt, hacelo más lento.', cue: 'Bisagra de cadera hasta que el torso quede casi paralelo al piso, espalda recta (NO redondeada). Brazos casi rectos colgando. Abrí hacia los costados llevando los CODOS al techo, apretá 1 seg. No encojas los hombros ni tires con la lumbar.', why: 'Rear delts = hombro redondo y postura. Push y Pull casi no los tocan.' },
-      { name: 'TRX Face Pull',                    sets: 3, reps: '15',      startWeight: 0,  load: 'TRX + peso corporal.', cue: 'Agarre pronado, cuerpo inclinado hacia atrás. Tirá llevando las manos a los costados de la cara con los CODOS ALTOS (a la altura del hombro). Apretá escápulas 1 seg. Cuanto más horizontal el cuerpo, más pesa.', why: 'Rear delt + trapecio medio desde otro ángulo. Antídoto directo a los hombros adelantados de escritorio.' },
-      { name: 'KB Woodchopper',                   sets: 3, reps: '12/lado', startWeight: 15, load: 'Kettlebell de 15kg, con las dos manos. De pie.', cue: 'Pies a la anchura de hombros. KB con las dos manos arriba de un hombro, bajala en diagonal hasta la cadera opuesta ROTANDO el tronco y pivoteando el pie de atrás. Controlá la vuelta, no la tires de un envión.', why: 'Potencia rotacional — el mismo patrón del swing de golf.' },
-      { name: 'Hanging Leg Raise',                sets: 3, reps: '12-15',   startWeight: 0,  load: 'Tu barra de dominadas.', cue: 'Colgado, sin swing. Levantá curvando la PELVIS hacia arriba (no solo las piernas), bajada lenta. Si no llegás a 12, hacé rodillas al pecho.', why: 'Lower abs — tenés la barra, aprovechala. El mejor ejercicio de abdomen bajo que existe.' },
-      { name: 'KB Suitcase Carry',                sets: 3, reps: '40 seg/lado', startWeight: 20, load: 'Kettlebell de 20kg en UNA sola mano.', cue: 'KB en una mano, caminá por la casa (o quedate parado) con el torso 100% derecho — no te inclines hacia el lado de la KB. Apretá el abdomen del lado libre para no torcerte. Hombros abajo y atrás. Cambiá de mano.', why: 'Core anti-lateral: el oblicuo trabaja frenando la inclinación. Finisher silencioso, ideal para casa.' },
+      { name: 'Prensa de Piernas',              sets: 2, reps: '12',      startWeight: 40, load: 'Máquina de prensa, peso liviano.', cue: 'Rango cómodo, sin despegar la pelvis. Terminá las 12 reps sintiendo que te sobran 4.', why: 'Confirma que la cadena posterior tolera carga sin que la zona media participe.' },
+      { name: 'Press Inclinado con Mancuernas', sets: 2, reps: '12',      startWeight: 10, load: 'Mancuernas de 10kg — las de siempre, no las de 14.', cue: 'Banco a 30°, escápulas apoyadas, bajada de 3 segundos. Si esto no molesta nada durante 2 semanas, ahí subís a 12kg.', why: 'Con 10kg volvés al peso que tu cuerpo conoce hace 3 años. Ese es el punto de partida real, no los 14.' },
+      { name: 'Remo con Pecho Apoyado',         sets: 2, reps: '12',      startWeight: 15, load: 'Máquina con pechera o mancuernas en banco inclinado boca abajo. Liviano.', cue: 'Pecho pegado al respaldo. Tirá con los codos, apretá escápulas 1 seg. Este es EL ejercicio a monitorear: si algo va a avisar del lado derecho, avisa acá.', why: 'Reintroduce el tirón horizontal con la columna descargada. Es el test principal de estas 2 semanas.' },
+      { name: 'Face Pull',                      sets: 3, reps: '15',      startWeight: 10, load: 'Polea con soga, bien liviano.', cue: 'Codos altos, apretá escápulas, todo controlado.', why: 'Rearma la musculatura postural que dejó de trabajar durante las 2 semanas parado.' },
+      { name: 'Dead Bug',                       sets: 3, reps: '8/lado',  startWeight: 0,  load: 'Peso corporal.', cue: 'Lumbar pegada al piso, exhalá al bajar. Si se despega, achicá el rango.', why: 'Core estabilizador. Es lo que faltaba cuando te sobrecargaste.' },
+      { name: 'Plancha Lateral',                sets: 3, reps: '25 seg/lado', startWeight: 0, load: 'Peso corporal, rodillas apoyadas si hace falta.', cue: 'Cadera arriba, cuerpo en línea. Hacé los DOS lados igual aunque el derecho se sienta distinto — sobre todo por eso.', why: 'Ataca directo la asimetría lateral derecha. El lado que te duele suele ser el que menos sostiene.' },
     ]
   },
 };
 
-const SESSION_ORDER = ['push','pull','legs','pump','full','temp'];
+const SESSION_ORDER = ['push','pull','legs','mob','pump','full','temp'];
 
 /* BRO MESSAGES */
 const BRO_HYPE = [
@@ -721,12 +826,12 @@ const BRO_HYPE = [
   "STOP COUNTING REPS. START COUNTING WHO'S WATCHING.",
   "Your future self is in the mirror right now, BEGGING you to train.",
   "Soft work = soft body. Hard work = hard body. Math.",
-  "One. More. Rep. ALWAYS one more rep.",
+  "La rep limpia cuenta. La rep con envión no cuenta y encima te cobra.",
   "Discipline > motivation. Motivation is for amateurs.",
   "You don't need a perfect day. You need TODAY.",
   "Excuses don't lift weights. YOU lift weights.",
-  "Pain is just weakness leaving the body and gains moving in.",
-  "Don't tell me you're tired. Tell me you're done.",
+  "El tipo que entrena 48 semanas al año con 12kg le gana al que entrena 20 semanas con 20kg. Todas las veces.",
+  "Lesionarse no es mala suerte. Es apuro. Y el apuro se elige.",
   "Champions are made when nobody's watching. Show up.",
   "The hardest part is putting on the shoes. After that, it's just lifting.",
   "Your body is BEGGING to grow. Feed it. Train it. Earn it.",
@@ -735,8 +840,10 @@ const BRO_HYPE = [
   "Comfort zone = nothing grows there. Get uncomfortable on purpose.",
   "Talk less. Lift more. Eat more. Sleep more. Win.",
   "Your golf swing is built in your training. So is your shirt fit. So is your confidence.",
-  "If the last set wasn't hard, you didn't actually train. You just showed up.",
-  "Beat one number from last time. That's the whole job.",
+  "La última serie tiene que ser exigente, no destructiva. Hay una diferencia y tu espalda la conoce.",
+  "Repetir el mismo peso con mejor técnica ES progreso. Anotalo igual.",
+  "Los 20 minutos de movilidad son los que te dejan hacer los otros tres días. No son el premio consuelo.",
+  "Nadie te va a preguntar cuánto levantabas. Te van a ver moverte bien a los 60.",
 ];
 
 const BRO_SMART = [
@@ -760,6 +867,18 @@ const BRO_SMART = [
   "First rep slow, last rep clean. The middle reps take care of themselves.",
   "Log every set. The notebook is the difference between training and just sweating.",
   "Carbs around training improve performance AND recovery — use them.",
+  "El músculo se adapta en semanas. El tendón y la fascia tardan meses. Por eso podés levantar un peso que todavía no podés tolerar.",
+  "Salto seguro de carga: 5-10%. De 10kg el próximo escalón es 11-12, nunca 14. Ese 40% es lesión, no progreso.",
+  "Doble progresión: mismo peso hasta el tope del rango en TODAS las series, dos sesiones seguidas. Recién ahí subís.",
+  "Más ejercicios para el mismo músculo no es más estímulo: es más fatiga con el mismo resultado y peor técnica al final.",
+  "2 a 4 ejercicios bien elegidos por sesión le ganan a 7 apurados. La calidad de cada serie es la variable.",
+  "El rango completo con carga es movilidad. No tenés que elegir entre verte bien y moverte bien.",
+  "RIR 2 (dos reps en el tanque) da casi el mismo crecimiento que el fallo, con una fracción del riesgo y la fatiga.",
+  "La bajada lenta de 3 segundos te deja usar menos peso para el mismo estímulo. Es el mejor trato del gimnasio.",
+  "Core anti-rotación (Pallof, dead bug, plancha lateral) protege la espalda más que cualquier abdominal con giro.",
+  "Volver de una lesión: 2 semanas al 50% de carga. Se siente ridículo y es exactamente lo correcto.",
+  "El dolor muscular mejora cuando te movés. El que empeora en reposo o te despierta de noche no es muscular — consultá.",
+  "Una zona media que no rota se sobrecarga. Por eso la apertura de libro está antes de cada sesión pesada.",
 ];
 
 /* ============================================================
@@ -830,7 +949,7 @@ function el(tag, attrs={}, children=[]){
 
 /* Bump on every routine/logic change so the version on screen tells you whether
    your phone is showing the current build or a cached one. */
-const APP_BUILD = 'build 18-07-b';
+const APP_BUILD = 'build 28-07 · anti-lesión';
 
 const EXERCISE_IMG_IDS = {
   'Barbell Bench Press':            'Barbell_Bench_Press_-_Medium_Grip',
@@ -888,6 +1007,28 @@ const EXERCISE_IMG_IDS = {
   'TRX Face Pull':                  'Face_Pull',
   'KB Woodchopper':                 'Standing_Cable_Wood_Chop',
   'KB Suitcase Carry':              'Farmers_Walk',
+  /* ---- REDISEÑO ANTI-LESIÓN (28/07) ---- */
+  'Press Inclinado con Mancuernas':               'Incline_Dumbbell_Press',
+  'Pec Deck / Apertura en Polea':                 'Butterfly',
+  'Elevación Lateral':                            'Side_Lateral_Raise',
+  'Extensión de Tríceps en Polea Alta (sobre la cabeza)': 'Cable_Rope_Overhead_Triceps_Extension',
+  'Jalón al Pecho (agarre neutro)':               'V-Bar_Pulldown',
+  'Remo con Pecho Apoyado':                       'Dumbbell_Incline_Row',
+  'Curl Inclinado con Mancuernas':                'Incline_Dumbbell_Curl',
+  'Prensa de Piernas':                            'Leg_Press',
+  'Curl Femoral Sentado':                         'Seated_Leg_Curl',
+  'Sentadilla Búlgara (mancuernas livianas)':     'Split_Squat_with_Dumbbells',
+  'Elevación de Gemelos de Pie':                  'Standing_Calf_Raises',
+  'Curl en Polea':                                'Standing_Biceps_Cable_Curl',
+  'Extensión de Tríceps con Soga (pushdown)':     'Triceps_Pushdown_-_Rope_Attachment',
+  'Pallof Press':                                 'Pallof_Press',
+  /* Día de movilidad */
+  'Cat-Cow (gato-camello)':                       'Cat_Stretch',
+  'Apertura de Libro (dorsal)':                   'Side-Lying_Floor_Stretch',
+  'World\'s Greatest Stretch':                    'Worlds_Greatest_Stretch',
+  'Dead Bug':                                     'Dead_Bug',
+  'Plancha Lateral':                              'Side_Bridge',
+  'Band Pull-Apart':                              'Band_Pull_Apart',
 };
 
 /* Some exercises have no photo of the exact home variant — the strip shows the
@@ -902,6 +1043,27 @@ const EXERCISE_SEARCH_NAME = {
   'TRX Face Pull':                  'TRX face pull',
   'KB Woodchopper':                 'kettlebell woodchopper',
   'KB Suitcase Carry':              'kettlebell suitcase carry',
+  /* ---- REDISEÑO ANTI-LESIÓN (28/07) — buscamos en inglés, hay mucho mejor material ---- */
+  'Press Inclinado con Mancuernas':               'incline dumbbell press',
+  'Pec Deck / Apertura en Polea':                 'pec deck machine chest fly',
+  'Elevación Lateral':                            'dumbbell lateral raise strict form',
+  'Extensión de Tríceps en Polea Alta (sobre la cabeza)': 'cable overhead rope triceps extension',
+  'Jalón al Pecho (agarre neutro)':               'neutral grip lat pulldown',
+  'Remo con Pecho Apoyado':                       'chest supported row machine',
+  'Curl Inclinado con Mancuernas':                'incline dumbbell curl',
+  'Prensa de Piernas':                            'leg press proper form',
+  'Curl Femoral Sentado':                         'seated leg curl',
+  'Sentadilla Búlgara (mancuernas livianas)':     'bulgarian split squat dumbbells',
+  'Elevación de Gemelos de Pie':                  'standing calf raise',
+  'Curl en Polea':                                'standing cable bicep curl',
+  'Extensión de Tríceps con Soga (pushdown)':     'rope triceps pushdown',
+  'Pallof Press':                                 'pallof press anti rotation core',
+  'Cat-Cow (gato-camello)':                       'cat cow exercise',
+  'Apertura de Libro (dorsal)':                   'open book thoracic rotation stretch',
+  'World\'s Greatest Stretch':                    'worlds greatest stretch',
+  'Dead Bug':                                     'dead bug exercise',
+  'Plancha Lateral':                              'side plank',
+  'Band Pull-Apart':                              'band pull apart',
 };
 const EX_DB_BASE = 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
 
@@ -913,6 +1075,11 @@ const EXERCISE_IMG_NOTE = {
   'TRX Face Pull':                  'Foto: face pull con polea. Mismo tirón de codos altos, vos con el TRX.',
   'KB Woodchopper':                 'Foto: con polea. Mismo patrón diagonal, vos con la KB de 15.',
   'KB Suitcase Carry':              'Foto: farmer walk con 2 pesos. Vos: UNA sola mano con la KB de 20 (ahí está el laburo del oblicuo).',
+  /* ---- REDISEÑO ANTI-LESIÓN (28/07) ---- */
+  'Remo con Pecho Apoyado':         'Foto: remo con mancuernas en banco inclinado boca abajo. Si el gym tiene máquina con pechera, mejor todavía — es lo mismo pero más estable.',
+  'Apertura de Libro (dorsal)':     'Foto: giro dorsal acostado de costado. Lo importante: las rodillas NO se despegan del piso, gira solo el pecho.',
+  'Plancha Lateral':                'Foto: plancha lateral completa. Si 25 segundos es mucho, apoyá las rodillas — sigue contando.',
+  'Pallof Press':                   'Foto: polea a la altura del pecho, de costado. El trabajo es NO dejar que el torso rote.',
 };
 
 function searchName(name){ return EXERCISE_SEARCH_NAME[name] || name; }
@@ -1113,6 +1280,16 @@ function renderToday(){
   heroTitle.textContent = def.name.toUpperCase();
   heroSub.textContent = def.blurb;
 
+  /* Warm-up card. The ramp-in is part of the session, not something optional you
+     do if there's time — going straight to a working set is how the mid-back
+     overload happened in the first place. */
+  if(def.warmup && def.warmup.length){
+    body.appendChild(el('div',{class:'card', style:'margin-bottom:14px'},[
+      el('h3',{},'ENTRADA EN CALOR — no es opcional'),
+      el('div',{class:'stack', style:'margin-top:10px'}, def.warmup.map(t=> el('div',{class:'alert good'}, t)))
+    ]));
+  }
+
   /* Exercise blocks */
   def.exercises.forEach((ex, i)=>{
     const exEntry = getExerciseEntry(entry, i, ex.sets, ex);
@@ -1309,7 +1486,16 @@ function renderPlan(){
     const host = document.getElementById('plan' + idCap);
     if(!host) return;
     host.innerHTML = '';
-    SESSIONS[id].exercises.forEach(ex=>{
+    const sess = SESSIONS[id];
+    host.appendChild(el('div',{class:'alert info',style:'margin-bottom:12px'},[
+      el('b',{},'Por qué está armada así: '), sess.blurb
+    ]));
+    if(sess.warmup && sess.warmup.length){
+      host.appendChild(el('div',{class:'alert good',style:'margin-bottom:12px'},[
+        el('b',{},'Entrada en calor: '), sess.warmup.join(' · ')
+      ]));
+    }
+    sess.exercises.forEach(ex=>{
       const titleChildren = [
         el('span',{}, ex.name),
         el('span',{class:'target'}, `${ex.sets}×${ex.reps}`),
