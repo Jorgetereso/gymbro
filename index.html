@@ -801,19 +801,19 @@ const SESSIONS = {
     ]
   },
   temp: {
-    name: 'Re-entrada', tag: 'temp', focus: 'Semanas 1-2 · Carga mínima',
-    blurb: 'Sesión activa: RE-ENTRADA (28/07). Esto es lo que hacés las PRIMERAS 2 SEMANAS, alternándolo con Movilidad, antes de tocar Push/Pull/Legs. 2 series por ejercicio, peso ridículamente liviano a propósito, RIR 4 (terminás cada serie sintiendo que podías hacer 4 más). El objetivo no es estimular: es comprobar que la espalda tolera el patrón. Si pasás las 2 semanas sin molestia, recién ahí arrancás la rotación normal.',
+    name: 'Re-entrada Casa', tag: 'temp', focus: 'Full Body · 10kg DBs · Vuelta después de 2 meses',
+    blurb: 'Sesión activa: RE-ENTRADA CASA (19/10). Volvés después de 2 meses parado — todo en casa, mancuernas de 10kg, cuerpo completo. Objetivo: reactivar patrón de movimiento, NO reventar. 60-90s descanso entre series. Terminás sintiendo que podías hacer 1-2 reps más por serie (RIR 2). Si algo molesta, cortás esa serie. La semana que viene subís volumen.',
     warmup: [
-      'Cat-cow ×10 + apertura de libro ×8 por lado + world\'s greatest stretch ×5 por lado.',
-      'Todo con la mitad del peso que creés que podés. En serio.',
+      'Cat-cow ×10 + rotación de hombros ×10 por lado + sentadillas sin peso ×10.',
+      'Si hace frío o venís de estar sentado, sumá 5 min de caminata o saltos suaves antes de empezar.',
     ],
     exercises: [
-      { name: 'Prensa de Piernas',              sets: 2, reps: '12',      startWeight: 40, load: 'Máquina de prensa, peso liviano.', cue: 'Rango cómodo, sin despegar la pelvis. Terminá las 12 reps sintiendo que te sobran 4.', why: 'Confirma que la cadena posterior tolera carga sin que la zona media participe.' },
-      { name: 'Press Inclinado con Mancuernas', sets: 2, reps: '12',      startWeight: 10, load: 'Mancuernas de 10kg — las de siempre, no las de 14.', cue: 'Banco a 30°, escápulas apoyadas, bajada de 3 segundos. Si esto no molesta nada durante 2 semanas, ahí subís a 12kg.', why: 'Con 10kg volvés al peso que tu cuerpo conoce hace 3 años. Ese es el punto de partida real, no los 14.' },
-      { name: 'Remo con Pecho Apoyado',         sets: 2, reps: '12',      startWeight: 15, load: 'Máquina con pechera o mancuernas en banco inclinado boca abajo. Liviano.', cue: 'Pecho pegado al respaldo. Tirá con los codos, apretá escápulas 1 seg. Este es EL ejercicio a monitorear: si algo va a avisar del lado derecho, avisa acá.', why: 'Reintroduce el tirón horizontal con la columna descargada. Es el test principal de estas 2 semanas.' },
-      { name: 'Face Pull',                      sets: 3, reps: '15',      startWeight: 10, load: 'Polea con soga, bien liviano.', cue: 'Codos altos, apretá escápulas, todo controlado.', why: 'Rearma la musculatura postural que dejó de trabajar durante las 2 semanas parado.' },
-      { name: 'Dead Bug',                       sets: 3, reps: '8/lado',  startWeight: 0,  load: 'Peso corporal.', cue: 'Lumbar pegada al piso, exhalá al bajar. Si se despega, achicá el rango.', why: 'Core estabilizador. Es lo que faltaba cuando te sobrecargaste.' },
-      { name: 'Plancha Lateral',                sets: 3, reps: '25 seg/lado', startWeight: 0, load: 'Peso corporal, rodillas apoyadas si hace falta.', cue: 'Cadera arriba, cuerpo en línea. Hacé los DOS lados igual aunque el derecho se sienta distinto — sobre todo por eso.', why: 'Ataca directo la asimetría lateral derecha. El lado que te duele suele ser el que menos sostiene.' },
+      { name: 'Goblet Squat (DB 10kg)',         sets: 3, reps: '12',      startWeight: 10, load: 'DB 10kg vertical contra el pecho.', cue: 'DB sostenida con las dos manos pegada al pecho. Pies a la anchura de hombros, dedos un poco hacia afuera. Bajá controlado hasta que los codos casi toquen las rodillas. Pecho arriba todo el tiempo. Empujá del piso con los talones.', why: 'Patrón de sentadilla con carga mínima. Reactiva cuádriceps + glúteos + core sin cargar la columna.' },
+      { name: 'Push-Up',                        sets: 3, reps: '8-12',    startWeight: 0,  load: 'Peso corporal.', cue: 'Manos un poco más anchas que los hombros, cuerpo en línea recta de talón a cabeza. Bajá hasta que el pecho casi toque el piso. Si 12 son fáciles, bajada más lenta (3 seg). Si no llegás a 8, apoyá las rodillas.', why: 'Pecho + tríceps + core sin equipo. Mejor que press con DB 10kg porque pedís trabajo real de estabilización.' },
+      { name: 'DB Row (1 brazo)',               sets: 3, reps: '10/brazo', startWeight: 10, load: 'DB 10kg, una mano y rodilla en el sofá/silla.', cue: 'Una mano y una rodilla apoyadas en el sofá, espalda plana paralela al piso. Tirá la DB al costado de la cadera (NO al pecho), codo pegado al cuerpo, apretá omóplato arriba 1 seg. Bajada controlada. Hacé 10 de un lado, cambiá.', why: 'Espalda media + dorsales + bíceps. Unilateral = corrige asimetrías que la máquina esconde.' },
+      { name: 'Romanian Deadlift (2 DBs)',      sets: 3, reps: '12',      startWeight: 10, load: 'DBs 10kg, una en cada mano al costado.', cue: 'Rodillas blandas (NO dobladas). Empujá la cadera hacia atrás como cerrando una puerta con el culo. Las DBs rozan los muslos en la bajada. Bajá hasta sentir stretch en isquios — no más. Cadera adelante para volver, apretá glúteo arriba.', why: 'Isquios + glúteos + lumbares. Patrón de bisagra — fundamental para espalda sana y potencia en golf/pádel.' },
+      { name: 'DB Shoulder Press (parado)',     sets: 3, reps: '10',      startWeight: 10, load: 'DBs 10kg, una en cada mano.', cue: 'Parado, pies anchura de hombros, core apretado. DBs a la altura de las orejas, palmas hacia adelante. Empujá arriba hasta que casi se toquen. NO arquees la lumbar — si tenés que arquear para subirlas, es señal de que el peso ganó. Bajada controlada 2 seg.', why: 'Hombros + tríceps + core (parado = mucho más trabajo de abdomen que sentado).' },
+      { name: 'Plank',                          sets: 2, reps: '30 seg',  startWeight: 0,  load: 'Peso corporal.', cue: 'Codos abajo del hombro, cuerpo en línea recta desde talón hasta cabeza. Apretá glúteo + abdomen fuerte. NO dejes caer la cadera. Respirá normal.', why: 'Core estable = base para todo lo demás. Cierre perfecto después de 2 meses parado.' },
     ]
   },
 };
@@ -997,6 +997,12 @@ const EXERCISE_IMG_IDS = {
   'DB Bench Press':                 'Dumbbell_Bench_Press',
   'Lat Pulldown':                   'Wide-Grip_Lat_Pulldown',
   'DB Shoulder Press (Seated)':     'Dumbbell_Shoulder_Press',
+  /* RE-ENTRADA CASA (temp 19/10) */
+  'Goblet Squat (DB 10kg)':         'Goblet_Squat',
+  'Push-Up':                        'Pushups',
+  'DB Row (1 brazo)':               'Bent_Over_Dumbbell_Row',
+  'Romanian Deadlift (2 DBs)':      'Romanian_Deadlift',
+  'DB Shoulder Press (parado)':     'Standing_Dumbbell_Press',
   /* HOME PUMP & CORE (temp 18/07) */
   'DB Curl (supinado)':             'Dumbbell_Bicep_Curl',
   'TRX Bicep Curl':                 'Incline_Dumbbell_Curl',
