@@ -801,19 +801,19 @@ const SESSIONS = {
     ]
   },
   temp: {
-    name: 'Re-entrada Casa', tag: 'temp', focus: 'Full Body · 10kg DBs · Vuelta después de 2 meses',
-    blurb: 'Sesión activa: RE-ENTRADA CASA (19/10). Volvés después de 2 meses parado — todo en casa, mancuernas de 10kg, cuerpo completo. Objetivo: reactivar patrón de movimiento, NO reventar. 60-90s descanso entre series. Terminás sintiendo que podías hacer 1-2 reps más por serie (RIR 2). Si algo molesta, cortás esa serie. La semana que viene subís volumen.',
+    name: 'Día 1 · Recuperación Activa', tag: 'temp', focus: 'Cardio suave + Movilidad + Core · Casa',
+    blurb: 'Sesión activa: DÍA 1 RE-ENTRADA (20/10). Ayer hiciste full body después de 2 meses parado — hoy el cuerpo va a estar duro. HOY NO ES PARA LEVANTAR PESO. Es cardio suave + movilidad + core liviano para activar sangre, bajar DOMS y preparar los próximos entrenamientos. ~30-40 min total. Si te sentís roto, hacé solo la caminata y los stretches. Mañana descanso, pasado volvés a cargar fierros.',
     warmup: [
-      'Cat-cow ×10 + rotación de hombros ×10 por lado + sentadillas sin peso ×10.',
-      'Si hace frío o venís de estar sentado, sumá 5 min de caminata o saltos suaves antes de empezar.',
+      'Empezá con la caminata directamente — ese es tu calentamiento.',
+      'Si estás MUY duro, extendé los stretches del final y bajá volumen del core.',
     ],
     exercises: [
-      { name: 'Goblet Squat (DB 10kg)',         sets: 3, reps: '12',      startWeight: 10, load: 'DB 10kg vertical contra el pecho.', cue: 'DB sostenida con las dos manos pegada al pecho. Pies a la anchura de hombros, dedos un poco hacia afuera. Bajá controlado hasta que los codos casi toquen las rodillas. Pecho arriba todo el tiempo. Empujá del piso con los talones.', why: 'Patrón de sentadilla con carga mínima. Reactiva cuádriceps + glúteos + core sin cargar la columna.' },
-      { name: 'Push-Up',                        sets: 3, reps: '8-12',    startWeight: 0,  load: 'Peso corporal.', cue: 'Manos un poco más anchas que los hombros, cuerpo en línea recta de talón a cabeza. Bajá hasta que el pecho casi toque el piso. Si 12 son fáciles, bajada más lenta (3 seg). Si no llegás a 8, apoyá las rodillas.', why: 'Pecho + tríceps + core sin equipo. Mejor que press con DB 10kg porque pedís trabajo real de estabilización.' },
-      { name: 'DB Row (1 brazo)',               sets: 3, reps: '10/brazo', startWeight: 10, load: 'DB 10kg, una mano y rodilla en el sofá/silla.', cue: 'Una mano y una rodilla apoyadas en el sofá, espalda plana paralela al piso. Tirá la DB al costado de la cadera (NO al pecho), codo pegado al cuerpo, apretá omóplato arriba 1 seg. Bajada controlada. Hacé 10 de un lado, cambiá.', why: 'Espalda media + dorsales + bíceps. Unilateral = corrige asimetrías que la máquina esconde.' },
-      { name: 'Romanian Deadlift (2 DBs)',      sets: 3, reps: '12',      startWeight: 10, load: 'DBs 10kg, una en cada mano al costado.', cue: 'Rodillas blandas (NO dobladas). Empujá la cadera hacia atrás como cerrando una puerta con el culo. Las DBs rozan los muslos en la bajada. Bajá hasta sentir stretch en isquios — no más. Cadera adelante para volver, apretá glúteo arriba.', why: 'Isquios + glúteos + lumbares. Patrón de bisagra — fundamental para espalda sana y potencia en golf/pádel.' },
-      { name: 'DB Shoulder Press (parado)',     sets: 3, reps: '10',      startWeight: 10, load: 'DBs 10kg, una en cada mano.', cue: 'Parado, pies anchura de hombros, core apretado. DBs a la altura de las orejas, palmas hacia adelante. Empujá arriba hasta que casi se toquen. NO arquees la lumbar — si tenés que arquear para subirlas, es señal de que el peso ganó. Bajada controlada 2 seg.', why: 'Hombros + tríceps + core (parado = mucho más trabajo de abdomen que sentado).' },
-      { name: 'Plank',                          sets: 2, reps: '30 seg',  startWeight: 0,  load: 'Peso corporal.', cue: 'Codos abajo del hombro, cuerpo en línea recta desde talón hasta cabeza. Apretá glúteo + abdomen fuerte. NO dejes caer la cadera. Respirá normal.', why: 'Core estable = base para todo lo demás. Cierre perfecto después de 2 meses parado.' },
+      { name: 'Caminata rápida',                sets: 1, reps: '20 min',   startWeight: 0,  load: 'Peso corporal — afuera, cinta o escaleras.', cue: 'Ritmo moderado-alto: podés hablar pero no cantar. Si tenés escaleras cerca, incluí 2-3 subidas. Si llueve, bici fija o elíptica suave sirve igual.', why: 'Cardio bajo impacto = sangre a músculos doloridos = DOMS se va más rápido. También despierta tobillos, caderas y hombros sin estrés.' },
+      { name: 'Glute Bridge',                   sets: 3, reps: '15',       startWeight: 0,  load: 'Peso corporal, pies apoyados.', cue: 'Acostado boca arriba, rodillas dobladas, pies apoyados. Empujá del talón, subí la cadera hasta que el cuerpo forme una línea recta desde la rodilla hasta el hombro. Apretá glúteo arriba 1 seg. Bajada controlada.', why: 'Activa glúteos sin cargar la columna. Después de un día de squats/RDL ayuda a soltar lumbar.' },
+      { name: 'Bird Dog',                       sets: 3, reps: '8/lado',   startWeight: 0,  load: 'Peso corporal, en cuatro apoyos.', cue: 'En cuatro apoyos, espalda plana. Extendé brazo derecho + pierna izquierda al mismo tiempo, mantené 2 seg sin que la cadera se tuerza. Volvé controlado y cambiá. Core apretado todo el tiempo.', why: 'Core + estabilidad lumbar + coordinación cruzada. Fundacional para que la espalda aguante entrenamientos más duros.' },
+      { name: 'Dead Bug',                       sets: 3, reps: '10/lado',  startWeight: 0,  load: 'Peso corporal.', cue: 'Boca arriba, brazos al techo, rodillas a 90°. Bajá brazo derecho + pierna izquierda al mismo tiempo, lento. La lumbar NO se despega del piso. Si se despega, achicá el rango.', why: 'Core profundo (transverso). Trabaja la pared abdominal sin flexionar la columna.' },
+      { name: 'Side Plank',                     sets: 2, reps: '20 seg/lado', startWeight: 0, load: 'Peso corporal.', cue: 'Codo abajo del hombro, cadera arriba, cuerpo en línea recta. Si es muy duro, apoyá la rodilla de abajo. Mantené cadera APRETADA — no se cae.', why: 'Oblicuos + estabilidad lateral. Clave para rotación de pádel/golf.' },
+      { name: 'Stretch Full Body',              sets: 1, reps: '5 min',    startWeight: 0,  load: 'Peso corporal.', cue: 'Secuencia: 1 min cada uno — isquios sentado, cuádriceps parado, pecho en marco de puerta, cat-cow lento, child\'s pose. Respirá profundo en cada posición.', why: 'Baja tensión muscular, mejora rango de movimiento, acelera recuperación. 5 minutos que valen oro.' },
     ]
   },
 };
@@ -1003,6 +1003,13 @@ const EXERCISE_IMG_IDS = {
   'DB Row (1 brazo)':               'Bent_Over_Dumbbell_Row',
   'Romanian Deadlift (2 DBs)':      'Romanian_Deadlift',
   'DB Shoulder Press (parado)':     'Standing_Dumbbell_Press',
+  /* DÍA 1 RECUPERACIÓN ACTIVA (temp 20/10) */
+  'Caminata rápida':                'Walking',
+  'Glute Bridge':                   'Butt_Lift_Bridge',
+  'Bird Dog':                       'Alternate_Supermans',
+  'Dead Bug':                       'Dead_Bug',
+  'Side Plank':                     'Side_Bridge',
+  'Stretch Full Body':              'Standing_Hamstring_Stretch',
   /* HOME PUMP & CORE (temp 18/07) */
   'DB Curl (supinado)':             'Dumbbell_Bicep_Curl',
   'TRX Bicep Curl':                 'Incline_Dumbbell_Curl',
